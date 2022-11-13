@@ -1,8 +1,71 @@
 html{
-
+    background-color: #708090;
+    width: 100vw;
+    height: 100vh;
+}
+html, body {
+    margin: 0;
+    height: 100%;
 }
 
+
 body{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+#title_header{
+    background-color: yellow;
+    background-color: rgba(255,170,0,0.9);
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    transform: translate(-50%, -50%);
+    padding-top: 1em;
+    padding-bottom: 0.3em;
+}
+
+#wrapper1{
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#input_citizen{
+    text-align: center;
+    border-radius: 0.5em;
+    border: solid black 0.1em;
+    padding: 0.5em 1em 0.5em 1em;
+    background-color: #607080;
+    max-width: 40vw;
+    width: 40vw;
+    max-height: 30vh;
+    overflow: hidden;
+}
+
+#form_search_citizen{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#search_button{
+    text-align: center;
+    border-radius: 0.5em;
+    border: solid black 0.1em;
+    padding: 0.5em 1em 0.5em 1em;
+    background-color: #607080;
+    cursor: pointer;
+    margin-left: 2em;
+    height: 1.2em;
+    max-height: 1.2em;
 
 }
 
