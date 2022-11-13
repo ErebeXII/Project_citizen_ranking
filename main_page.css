@@ -1,0 +1,15 @@
+html{
+
+}
+
+body{
+
+}
+
+span.input[contenteditable] { /*I'm using span to change the size of the div according to the input*/
+    display: inline-block;
+}
+span.input[contenteditable]:empty::before {
+    content: attr(data-placeholder);
+    display: inline-block;
+}
