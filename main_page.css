@@ -38,6 +38,10 @@ body{
     align-items: center;
 }
 
+#emoji_title{
+    font-size: 46pt;
+}
+
 #input_citizen{
     text-align: center;
     border-radius: 0.5em;
