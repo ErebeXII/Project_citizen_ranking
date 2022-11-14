@@ -87,6 +87,7 @@ header{
 
 #form_search_citizen{
     display: flex;
+    width: 100%;
     flex-direction: row;
     align-items: center;
 }
@@ -97,6 +98,28 @@ header{
     margin-left: 2em;
     height: 1.2em;
     max-height: 1.2em;
+}
+
+#ranking_button{
+    margin-left: 2em;
+    background-color: #E13400;
+}
+
+#hidden_wrapper1{
+    margin-top: 3%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+}
+
+#ranking_table{
+    border-collapse: collapse;
+    width: 60%;
+}
+
+#ranking_table th, #ranking_table td{
+    border: solid black 0.1em;
 }
 
 #wrapper2{
