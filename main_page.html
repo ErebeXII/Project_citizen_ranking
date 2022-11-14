@@ -35,17 +35,24 @@
     <form id="form_search_citizen">
         <span class="input" role="textbox" id="input_citizen" data-placeholder="Tell us who you are" contenteditable></span>
         <div id="search_button" class="myButtons" onclick=window.location.href="https://www.google.com/" >Search</div>
-        <div id="ranking_button" class="myButtons">Rankings</div>
+        <div id="ranking_button" class="myButtons" onclick="rankingTable()">Rankings</div>
     </form>
 
 </div>
 
-<div id="hidden_wrapper1">
-    <table id="ranking_table">
-        <th>Rank</th>
-        <th>Surname</th>
-        <th>Name</th>
-        <th>Score</th>
+<div id="hidden_wrapper1" class="fixTableHead scrollable_div">
+    <table id="ranking_table" >
+
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Surname</th>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody id="ranking_table_body">
+        </tbody>
     </table>
 </div>
 

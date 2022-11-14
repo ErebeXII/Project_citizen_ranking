@@ -1,29 +1,27 @@
 html{
     background-color: #708090;
     width: 100vw;
-    height: 100vh;
+
     scroll-behavior: smooth;
     font-family: "Courier New", serif;
 }
+
 html, body {
     margin: 0;
     height: 100%;
 }
 
-
 body{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    justify-items: center;
+
     align-items: center;
     width: 100vw;
+    overflow-x: hidden;
 }
 
 header{
-    position: absolute;
-    width: 100%;
-    top: 0;
+    width: 100vw;
     display: flex;
     flex-direction: row;
 }
@@ -38,9 +36,7 @@ header{
 }
 
 #register_btn{
-    text-align: center;
     background-color: rgba(255,170,0,0.9);
-    cursor: pointer;
     padding-left: 3em;
 }
 
@@ -49,9 +45,7 @@ header{
 }
 
 #login_btn{
-    text-align: center;
     background-color: rgba(255,170,0,0.9);
-    cursor: pointer;
     padding-right: 3em;
 }
 
@@ -93,8 +87,6 @@ header{
 }
 
 #search_button{
-    text-align: center;
-    cursor: pointer;
     margin-left: 2em;
     height: 1.2em;
     max-height: 1.2em;
@@ -106,38 +98,60 @@ header{
 }
 
 #hidden_wrapper1{
+    display: none;
     margin-top: 3%;
-    display: flex;
     justify-content: center;
-    width: 100%;
-
+    width: 60%;
+    background-color: #607080;
+    overflow-y: scroll;
+    overflow-x:hidden ;
+    padding: 0 1em 0.5em 1em;
+    border: solid black 0.1em;
+    border-radius: 0.5em;
 }
 
 #ranking_table{
-    border-collapse: collapse;
-    width: 60%;
+    border-collapse: separate;
+    width: 60vw;
+
+}
+.fixTableHead {
+    overflow-y: scroll;
+    height: 60em;
+}
+.fixTableHead thead th{
+    position: sticky;
+    top: 0;
+    background-color: slategrey;
+    padding: 0.5em;
+    border: solid black 0.1em;
 }
 
-#ranking_table th, #ranking_table td{
+
+#ranking_table td{
+    width: 25%;
     border: solid black 0.1em;
 }
 
 #wrapper2{
-    width: 80%;
-    height: 40%;
+    width: 85vw;
+    height: 38vh;
+    margin-top: 3%;
 }
 
 #party_adds{
-    width: 100%;
-    height: 100%;
+    width: available;
+    height: 94%;
     background-color: #607080;
     border-radius: 0.5em;
     border: solid black 0.1em;
     padding: 0.5em 1em 0.5em 1em;
-    margin-top: 3%;
+
 }
 
 .myButtons{
+    text-align: center;
+    cursor: pointer;
     border-radius: 0.5em;
     border: solid black 0.1em;
     padding: 0.5em 1em 0.5em 1em;
@@ -150,4 +164,45 @@ span.input[contenteditable] { /*I'm using span to change the size of the div acc
 span.input[contenteditable]:empty::before {
     content: attr(data-placeholder);
     display: inline-block;
+}
+
+.scrollable_div::-webkit-scrollbar {
+    width: 1em;
+}
+
+/* Track */
+.scrollable_div::-webkit-scrollbar-track {
+    border-radius: 0.5em;
+}
+
+/* Handle */
+.scrollable_div::-webkit-scrollbar-thumb {
+    background: orange;
+    border-radius: 0.5em;
+}
+
+/* Handle on hover */
+.scrollable_div::-webkit-scrollbar-thumb:hover {
+    background: coral;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 1em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
