@@ -6,14 +6,17 @@ function rankingTable(){
     let table = document.getElementById("ranking_table");
     if (wrapper.style.display === "flex"){
         wrapper.style.display = "none";
+        window.location.href = "#wrapper1";
     }
     else{
         wrapper.style.display = "flex";
+        window.location.href = "#ranking_table";
     }
     if (!table_loaded){
         loadTable();
         table_loaded = true;
     }
+
 }
 
 function loadTable(){
