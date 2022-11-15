@@ -3,6 +3,7 @@ let table_loaded = false;
 function rankingTable(){
 
     let wrapper = document.getElementById("hidden_wrapper1");
+    let table = document.getElementById("ranking_table");
     if (wrapper.style.display === "flex"){
         wrapper.style.display = "none";
     }
@@ -59,6 +60,32 @@ function loadTable(){
         tr.appendChild(score);
         table.appendChild(tr);
     }
+}
+
+function funnierEmoji(){
+    let emoji_title = document.getElementById("emoji_title");
+    let img = document.createElement("img");
+
+    if (emoji_title.innerText === "😀") {
+        img.src = "mrincredible0.png";
+        emoji_title.innerHTML = "";
+        img.style.borderRadius = "2em";
+        img.style.height = "30vh";
+        img.style.width = "auto";
+        emoji_title.appendChild(img);
+        setTimeout(noMoreFunnyEmoji,5000, "😀");
+
+    }
+}
+
+function noMoreFunnyEmoji(emoji){
+    let emoji_title = document.getElementById("emoji_title");
+    let h1 = document.createElement("h1");
+    emoji_title.innerHTML = "";
+    emoji_title.style.height = "";
+
+    h1.innerText = emoji;
+    emoji_title.appendChild(h1);
 }
 
 

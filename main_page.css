@@ -61,10 +61,11 @@ header{
 
 #emoji_title{
     font-size: 42pt;
+    margin: 0.5em 0 0.5em 0;
 }
 
 #emoji_title h1{
-    margin: 3vh 0 5vh 0;
+    margin:0;
 }
 
 #input_citizen{
@@ -81,7 +82,7 @@ header{
 
 #form_search_citizen{
     display: flex;
-    width: 100%;
+    width: 60vw;
     flex-direction: row;
     align-items: center;
 }
