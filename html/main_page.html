@@ -5,8 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="main_page.css" rel="stylesheet">
-    <script src="main_page.js"></script>
+    <link href="../css/main_page.css" rel="stylesheet">
+    <script src="../js/main_page.js"></script>
     <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/v2.034/512px/1f396.png">
     <title>Citizen Ranking</title>
 </head>
@@ -27,7 +27,7 @@
 
 <div id="wrapper1">
 
-    <div id="emoji_title">
+    <div id="emoji_title" onclick="funnierEmoji()">
         <h1>
             &#128512
         </h1>
@@ -35,13 +35,30 @@
     <form id="form_search_citizen">
         <span class="input" role="textbox" id="input_citizen" data-placeholder="Tell us who you are" contenteditable></span>
         <div id="search_button" class="myButtons" onclick=window.location.href="https://www.google.com/" >Search</div>
+        <div id="ranking_button" class="myButtons" onclick="rankingTable()">Rankings</div>
     </form>
 
 </div>
 
+<div id="hidden_wrapper1" class="fixTableHead scrollable_div">
+    <table id="ranking_table" >
+
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Surname</th>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody id="ranking_table_body">
+        </tbody>
+    </table>
+</div>
+
 <div id="wrapper2">
     <div id="party_adds">
-        hu
+        adds
     </div>
 </div>
 
