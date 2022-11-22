@@ -2,7 +2,6 @@
 session_start();
 include 'DBConnection.php';
 
-
 $uid = $_GET['ID'];
 $query = "SELECT * FROM tblstudents WHERE ID = '$uid'";
 $result = mysqli_fetch_assoc($connection, $query);
