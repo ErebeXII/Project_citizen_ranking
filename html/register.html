@@ -22,44 +22,40 @@
 
 
         <form id="wrapper1_sub1">
+
             <div>
-                <div>
-                    <label for="surname">Surname</label><br />
-                    <input type="text" id="surname" class="text-input" placeholder="Enter your surname"><br /><br>
-                </div>
-
-                <div>
-                    <label for="place_birth">Place of Birth</label><br />
-                    <input id="place_birth" list="dlCities" class="text-input" placeholder="Enter your place of birth">
-
-                    <datalist id="dlCities"></datalist> <script>load_dlCities()</script>
-
-                </div>
+                <label for="surname">Surname</label><br />
+                <input type="text" id="surname" class="text-input" placeholder="Enter your surname"><br /><br>
+            </div>
+            <div>
+                <label for="firstname">First name</label><br />
+                <input type="text" id="firstname" class="text-input"  placeholder="Firstname"><br /><br>
             </div>
 
             <div>
-                <div>
-                    <label for="firstname">First name</label><br />
-                    <input type="text" id="firstname" class="text-input"  placeholder="Firstname"><br /><br>
-                </div>
-                <div>
-                    <label for="password">Password</label><br />
-                    <input type="password" id="password" class="text-input" name="password" placeholder="Enter your password"><br />
-                </div>
+                <label for="bday">Birthday</label><br />
+                <input type="date" id="bday" class="text-input"  min="1915-01-01" max="<?= date('Y-m-d'); ?>"><br /><br>
             </div>
 
             <div>
-                <div>
-                    <label for="bday">Birthday</label><br />
-                    <input type="date" id="bday" class="text-input"  min="1915-01-01" max="<?= date('Y-m-d'); ?>"><br /><br>
-                </div>
+                <label for="place_birth">Place of Birth</label><br />
+                <input id="place_birth" list="dlCities" class="text-input" placeholder="Enter your place of birth">
 
-                <div>
-                    <label for="confirm_password">Confirm Password</label><br />
-                    <input type="password" id="confirm_password" class="text-input" name="password" placeholder="Verify your password"><br />
-                </div>
+                <datalist id="dlCities"></datalist> <script>load_dlCities()</script>
 
             </div>
+
+            <div>
+                <label for="password">Password</label><br />
+                <input type="password" id="password" class="text-input" name="password" placeholder="Enter your password"><br />
+            </div>
+
+            <div>
+                <label for="confirm_password">Confirm Password</label><br />
+                <input type="password" id="confirm_password" class="text-input" name="password" placeholder="Verify your password"><br />
+            </div>
+
+
         </form>
 
         <input type="submit" value="Register" id="register_btn" class="orange_yellow_btn">
