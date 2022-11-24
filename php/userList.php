@@ -22,7 +22,12 @@
 
 <?php
 
+session_start();
 include 'DBConnection.php';
+
+if (isset($_SESSION['last_name'])) {
+    echo 'Gotcha Mr./Ms.' . $_SESSION['last_name'];
+}
 
 if (isset($_POST["submit"])) {
     $toSearch = $_POST["level"];
@@ -30,6 +35,8 @@ if (isset($_POST["submit"])) {
 } else {
     $query = "SELECT * FROM mock_data";
 }
+
+
 
 $results = mysqli_query($connection, $query);
 
