@@ -3,7 +3,6 @@ let table_loaded = false;
 function rankingTable(){
 
     let wrapper = document.getElementById("hidden_wrapper1");
-    let table = document.getElementById("ranking_table");
     if (wrapper.style.display === "flex"){
         wrapper.style.display = "none";
         window.location.href = "#wrapper1";
@@ -70,7 +69,7 @@ function funnierEmoji(){
     let img = document.createElement("img");
 
     if (emoji_title.innerText === "😀") {
-        img.src = "mrincredible0.png";
+        img.src = "../images/mrincredible0.png";
         emoji_title.innerHTML = "";
         img.style.borderRadius = "2em";
         img.style.height = "30vh";
