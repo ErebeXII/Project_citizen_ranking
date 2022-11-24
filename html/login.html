@@ -13,18 +13,26 @@
 <body>
 
     <div class="partyAdds">
-
+        
     </div>
 
   <div id="wrapper1">
-        <h1>Hello Citizen !</h1>
+      <div id="return_main" onclick="location.href='main_page.html'" class="orange_yellow_btn">↩</div>
+      <h1>Hello Citizen !</h1>
       <form id="login_form">
-          <label for="username">Username</label><br />
-          <input type="text" id="username" name="username"><br />
-          <label for="password">Password</label><br />
-          <input type="password" id="password" name="password"><br />
+          <div>
+              <label for="username">Username</label><br />
+              <input type="text" id="username" name="username" placeholder="👤   Enter your username"><br /><br>
+          </div>
+          <div>
+              <label for="password">Password</label><br />
+              <input type="password" id="password" name="password" placeholder="🔒   Enter your password"><br />
+              <a href="">Forgot Password</a>
+          </div>
 
-          <input type="submit" value="Login">
+          <br>
+
+          <input type="submit" value="Login" id="login_btn" class="orange_yellow_btn">
       </form>
   </div>
 
