@@ -131,7 +131,7 @@ function check_bday(){
 
 function check_city(){
     let el_city = document.getElementById('place_birth');
-    let city = el_city.value.toLowerCase();;
+    let city = el_city.value.toLowerCase();
 
     if (!letter_re.test(city)){
         setWarning(el_city, "popup_pbirth");
@@ -165,8 +165,8 @@ function check_address(){
     let el_city = document.getElementById('current_address_city');
 
     let nb = el_nb.value;
-    let street = el_street.value.toLowerCase();;
-    let city = el_city.value.toLowerCase();;
+    let street = el_street.value.toLowerCase();
+    let city = el_city.value.toLowerCase();
 
     console.log(nb_re.test(nb));
 
@@ -211,7 +211,7 @@ function check_mail(){
 
 function show_pop_up(pop_up, stop) {
     let popup = document.getElementById(pop_up);
-    if (!popup.classList.contains("show") | stop)
+    if (!popup.classList.contains("show") || stop)
         popup.classList.toggle("show");
 }
 
