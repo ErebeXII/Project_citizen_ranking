@@ -56,7 +56,9 @@ body{
     width: 100%;
 }
 
-#current_address_city,#current_address_n,#current_address_street{
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
     margin: 0;
 }
 

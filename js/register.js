@@ -86,22 +86,16 @@ function check_input_rgst(){
 
     check_pswd();
 
-    check_address(
-        document.getElementById('current_address_n').value,
-        document.getElementById('current_address_street').value,
-        document.getElementById('current_address_city').value
-    )
+    check_address();
 
-    check_phone(
-        document.getElementById('phone_n').value
-    )
+    check_phone();
 
-    check_mail(
-        document.getElementById('e-mail').value
-    )
+    check_mail();
 }
 
 const letter_re = new RegExp('([a-z]|-|é|è){1,20}');
+const nb_re = new RegExp('\\d{1,12}');
+const mail_re = new RegExp('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$');
 
 function check_name(){
     let el_fname =   document.getElementById('firstname');
@@ -111,16 +105,12 @@ function check_name(){
 
 
     if (!letter_re.test(fname)){
-        el_fname.style.backgroundColor = "rgba(185,0,0,0.5)";
-        show_pop_up("popup_fname");
-        setTimeout(reset_warning,5000, el_fname, "popup_fname");
+        setWarning(el_fname, "popup_fname");
         return false;
     }
 
     if (!letter_re.test(lname)){
-        el_lname.style.backgroundColor = "rgba(185,0,0,0.5)";
-        show_pop_up("popup_lname");
-        setTimeout(reset_warning,5000, el_lname, "popup_lname");
+        setWarning(el_lname, "popup_lname");
         return false
     }
 
@@ -133,9 +123,7 @@ function check_bday(){
 
 
     if(el_date.value === "" || date > new Date()){
-        el_date.style.backgroundColor = "rgba(185,0,0,0.5)";
-        show_pop_up("popup_bday");
-        setTimeout(reset_warning,5000, el_date, "popup_bday");
+        setWarning(el_date, "popup_bday");
         return false
     }
     return true
@@ -143,18 +131,16 @@ function check_bday(){
 
 function check_city(){
     let el_city = document.getElementById('place_birth');
-    let city = el_city.value;
+    let city = el_city.value.toLowerCase();;
 
     if (!letter_re.test(city)){
-        el_city.style.backgroundColor = "rgba(185,0,0,0.5)";
-        show_pop_up("popup_pbirth");
-        setTimeout(reset_warning,5000, el_city, "popup_pbirth");
+        setWarning(el_city, "popup_pbirth");
         return false
     }
     return true;
 }
 
-function check_pswd(psw1, psw2){
+function check_pswd(){
     let el_pwd1 = document.getElementById('password');
     let el_pwd2 = document.getElementById('confirm_password');
 
@@ -162,29 +148,65 @@ function check_pswd(psw1, psw2){
     let pwd2 = el_pwd2.value;
 
     if (pwd1.length > 20 || pwd1 === ""){
-        el_pwd1.style.backgroundColor = "rgba(185,0,0,0.5)";
-        show_pop_up("popup_pwd1");
-        setTimeout(reset_warning,5000, el_pwd1, "popup_pwd1");
+        setWarning(el_pwd1, "popup_pwd1");
         return false
     }
     if(pwd1 !== pwd2){
-        el_pwd2.style.backgroundColor = "rgba(185,0,0,0.5)";
-        show_pop_up("popup_pwd2");
-        setTimeout(reset_warning,5000, el_pwd2, "popup_pwd2");
+        setWarning(el_pwd2, "popup_pwd2");
+
         return false
     }
+    return true;
 }
 
-function check_address(nb,address,city){
+function check_address(){
+    let el_nb = document.getElementById('current_address_n');
+    let el_street = document.getElementById('current_address_street');
+    let el_city = document.getElementById('current_address_city');
 
+    let nb = el_nb.value;
+    let street = el_street.value.toLowerCase();;
+    let city = el_city.value.toLowerCase();;
+
+    console.log(nb_re.test(nb));
+
+    if (!nb_re.test(nb)){
+        setWarning(el_nb, "popup_address");
+        return false;
+    }
+    if (!letter_re.test(street)){
+        setWarning(el_street, "popup_address");
+        return false;
+    }
+    if (!letter_re.test(city)){
+        setWarning(el_city, "popup_address");
+        return false;
+    }
+
+    return true;
 }
 
-function check_phone(phone){
+function check_phone(){
+    let el_phone = document.getElementById('phone_n');
+    let phone = el_phone.value;
 
+    if(!nb_re.test(phone)){
+        setWarning(el_phone, "popup_phone");
+        return false;
+    }
+    return true;
 }
 
-function check_mail(mail){
+function check_mail(){
+    let el_mail = document.getElementById('e-mail');
+    let mail = el_mail.value;
 
+    if(!mail_re.test(mail)){
+        setWarning(el_mail, "popup_mail");
+        return false;
+    }
+
+    return true;
 }
 
 function show_pop_up(pop_up, stop) {
@@ -193,11 +215,16 @@ function show_pop_up(pop_up, stop) {
         popup.classList.toggle("show");
 }
 
+function setWarning(elmnt, popup){
+    elmnt.style.backgroundColor = "rgba(185,0,0,0.5)";
+    show_pop_up(popup);
+    setTimeout(reset_warning,5000, elmnt, popup);
+}
+
 function reset_warning(elmnt, popup){
     if (elmnt.style.backgroundColor !== 'transparent'){//avoid blinking popup if user spams register btn with wrong input
         elmnt.style.backgroundColor = 'transparent';
         show_pop_up(popup, true);
     }
-
 }
 
