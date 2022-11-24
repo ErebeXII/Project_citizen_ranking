@@ -8,27 +8,35 @@
 </head>
 <body>
     <h2>Select the user level :</h2>
-    <form action="#" method="post">
+    <form action="" method="post">
         <select id="level" name="level">
             <option value=1>1</option> 
             <option value=2>2</option>
             <option value=3>3</option>
         </select>
+        <input type="submit" class="btn" value="submit" name="submit">
     </form>
-    <input type="submit" class="btn" value="submit" name="submit">
+    
 </body>
 </html>
 
 <?php
 
+session_start();
 include 'DBConnection.php';
+
+if (isset($_SESSION['last_name'])) {
+    echo 'Gotcha Mr./Ms.' . $_SESSION['last_name'];
+}
 
 if (isset($_POST["submit"])) {
     $toSearch = $_POST["level"];
-    $query = "SELECT * FROM users where userLevel = $toSearch";
+    $query = "SELECT * FROM mock_data where status = $toSearch";
 } else {
-    $query = "SELECT * FROM users";
+    $query = "SELECT * FROM mock_data";
 }
+
+
 
 $results = mysqli_query($connection, $query);
 
@@ -37,12 +45,12 @@ echo "
 <table>
 <tr>
     <th>ID</th>
-    <th>Email</th>
+    <th>last name</th>
 </tr>";
 while ($row = mysqli_fetch_assoc($results)) {
     echo '<tr>';
-    echo '<td>' . $row['ID'] .'</td>';
-    echo '<td>' . $row['email'] .'</td>';
+    echo '<td>' . $row['id'] .'</td>';
+    echo '<td>' . $row['last_name'] .'</td>';
     echo '</th>';
 }
 echo '</table>';
