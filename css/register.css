@@ -1,0 +1,68 @@
+html{
+    background-color: #708090;
+    width: 100vw;
+    scroll-behavior: smooth;
+    font-family: "Courier New", serif;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+#wrapper1{
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 0.5em;
+    position: relative;
+    font-weight: bolder;
+    font-size: 20pt;
+}
+
+#wrapper1 input{
+    margin: 1em 0 0 0;
+}
+
+#wrapper1 h1{
+    text-align: center;
+}
+
+#wrapper1_sub1{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-between;
+}
+
+#bday:focus, #place_birth:focus{
+    width: 100%;
+}
+
+#register_btn{
+    width: 60%;
+    height: 2.5em;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border: 0;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 0.5em;
+    cursor: pointer;
+}

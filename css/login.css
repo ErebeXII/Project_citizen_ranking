@@ -65,8 +65,11 @@ body{
 }
 
 #login_form input{
-    width: 100%;
     margin: 1em 0 0 0;
+}
+
+.text-input{
+    width: 100%;
     background-color: rgba(0,0,0,0);
     border: 0;
     border-bottom: black solid 0.1em;
@@ -74,19 +77,19 @@ body{
     font-family: "Courier New", serif;
 }
 
-#login_form input:focus{
+.text-input:focus{
     width: 125%;
     transition: ease-in-out, width .35s ease-in-out;
     outline: none;
     border-bottom: black solid 0.2em;
 }
 
-#login_form input:focus::placeholder{
+.text-input:focus::placeholder{
     color: transparent;
     transition: color 0.5s;
 }
 
-#login_form input::placeholder{
+.text-input::placeholder{
     color: black;
     transition: color 1s;
 }

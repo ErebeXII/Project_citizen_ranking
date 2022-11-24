@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../js/register.js"></script>
+    <link href="../css/login.css" rel="stylesheet">
+    <link href="../css/register.css" rel="stylesheet">
+    <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/v2.034/512px/1f396.png">
+    <title>Register</title>
+</head>
+<body>
+
+    <div id="wrapper1">
+
+        <div style="width: 100%">
+            <h1>Welcome new citizen!</h1>
+            <div id="return_main" onclick="location.href='main_page.html'" class="orange_yellow_btn">↩</div>
+        </div>
+
+
+        <form id="wrapper1_sub1">
+            <div>
+                <div>
+                    <label for="surname">Surname</label><br />
+                    <input type="text" id="surname" class="text-input" placeholder="Enter your surname"><br /><br>
+                </div>
+
+                <div>
+                    <label for="place_birth">Place of Birth</label><br />
+                    <input id="place_birth" list="dlCities" class="text-input" placeholder="Enter your place of birth">
+
+                    <datalist id="dlCities"></datalist> <script>load_dlCities()</script>
+
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <label for="firstname">First name</label><br />
+                    <input type="text" id="firstname" class="text-input"  placeholder="Firstname"><br /><br>
+                </div>
+                <div>
+                    <label for="password">Password</label><br />
+                    <input type="password" id="password" class="text-input" name="password" placeholder="Enter your password"><br />
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <label for="bday">Birthday</label><br />
+                    <input type="date" id="bday" class="text-input"  min="1915-01-01" max="<?= date('Y-m-d'); ?>"><br /><br>
+                </div>
+
+                <div>
+                    <label for="confirm_password">Confirm Password</label><br />
+                    <input type="password" id="confirm_password" class="text-input" name="password" placeholder="Verify your password"><br />
+                </div>
+
+            </div>
+        </form>
+
+        <input type="submit" value="Register" id="register_btn" class="orange_yellow_btn">
+    </div>
+
+</body>
+</html>
