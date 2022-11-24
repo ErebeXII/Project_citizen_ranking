@@ -70,16 +70,16 @@ body{
 
 .text-input{
     width: 100%;
-    background-color: rgba(0,0,0,0);
+    background-color: transparent;
     border: 0;
     border-bottom: black solid 0.1em;
-    transition: ease-in-out, width .35s ease-in-out;
+    transition: ease-in-out, width .35s ease-in-out, color 1s;
     font-family: "Courier New", serif;
 }
 
 .text-input:focus{
-    width: 125%;
-    transition: ease-in-out, width .35s ease-in-out;
+    width: 110%;
+    transition: ease-in-out, width .35s ease-in-out, color 1s;
     outline: none;
     border-bottom: black solid 0.2em;
 }

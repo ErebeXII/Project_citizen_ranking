@@ -29,7 +29,7 @@ body{
     border-radius: 0.5em;
     position: relative;
     font-weight: bolder;
-    font-size: 20pt;
+    font-size: 17pt;
 }
 
 #wrapper1 input{
@@ -46,13 +46,18 @@ body{
 }
 
 #wrapper1_sub1 div{
-    width: 25%;
+    width: 28%;
+    height: 20%;
     display: inline-block;
-    margin: 0 3% 0 3%;
+    margin: 0 1.5% 4% 1.5%;
 }
 
 #bday:focus, #place_birth:focus{
     width: 100%;
+}
+
+#current_address_city,#current_address_n,#current_address_street{
+    margin: 0;
 }
 
 #register_btn{
@@ -89,8 +94,68 @@ body{
         width: 80%;
     }
 
-    .text-input:focus{
-        width:  110%;
-    }
 }
 
+/* Popup container */
+.popup {
+    position: relative;
+    display: inline-block;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity:0;}
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+    visibility: hidden;
+    width: 50%;
+    font-size: 10pt;
+    background-color: rgb(185,0,0);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
