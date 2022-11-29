@@ -170,15 +170,9 @@ function check_address(){
 
     console.log(nb_re.test(nb));
 
-    if (!nb_re.test(nb)){
+    if (!nb_re.test(nb) || !letter_re.test(street) || !letter_re.test(city)){
         setWarning(el_nb, "popup_address");
-        return false;
-    }
-    if (!letter_re.test(street)){
         setWarning(el_street, "popup_address");
-        return false;
-    }
-    if (!letter_re.test(city)){
         setWarning(el_city, "popup_address");
         return false;
     }
