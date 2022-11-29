@@ -3,7 +3,7 @@
 $host = 'localhost'; //127.0.0.1
 $username = 'root'; //
 $password='';
-$database='projecttest';
+$database='C:\xampp\htdocs\efrei';
 
 $connection = mysqli_connect($host,$username,$password,$database);
 

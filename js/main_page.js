@@ -21,6 +21,8 @@ function rankingTable(){
 function loadTable(){
     let table = document.getElementById("ranking_table_body");
 
+    
+
     for (let i = 0; i < 100; i++) {
         let tr = document.createElement("tr");
         let rank = document.createElement("td");
