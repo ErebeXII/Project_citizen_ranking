@@ -31,22 +31,7 @@ body{
     position: relative;
 }
 
-#return_main{
-    position: absolute;
-    width: 1em;
-    height: 1em;
-    font-size: 15pt;
-    font-weight: bolder;
-    color: #eeeeee;
-    top: 5%;
-    right:5%;
-    padding: 1em;
-    background-color: #607080;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.5s;
-    background-size: 200% auto;
-}
+
 
 #login_form{
     width: 100%;
@@ -68,31 +53,6 @@ body{
     margin: 1em 0 0 0;
 }
 
-.text-input{
-    width: 100%;
-    background-color: transparent;
-    border: 0;
-    border-bottom: black solid 0.1em;
-    transition: ease-in-out, width .35s ease-in-out, color 1s;
-    font-family: "Courier New", serif;
-}
-
-.text-input:focus{
-    width: 110%;
-    transition: ease-in-out, width .35s ease-in-out, color 1s;
-    outline: none;
-    border-bottom: black solid 0.2em;
-}
-
-.text-input:focus::placeholder{
-    color: transparent;
-    transition: color 0.5s;
-}
-
-.text-input::placeholder{
-    color: black;
-    transition: color 1s;
-}
 
 #login_form a:link{
     display: flex;
@@ -142,26 +102,16 @@ body{
     height: 2.5em;
     text-align: center;
     text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
+
     color: white;
     box-shadow: 0 0 20px #eee;
     border-radius: 0.5em;
-    cursor: pointer;
+
 }
 
 #login_form #login_btn{
     border: 0;
 }
-
-.orange_yellow_btn {
-    background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
-}
-
-.orange_yellow_btn:hover {
-    background-position: center center;
-}
-
 
 .partyAdds{
     height: 85vh;

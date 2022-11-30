@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="../js/register.js"></script>
-    <link href="../css/login.css" rel="stylesheet">
+    <link href="../css/classes.css" rel="stylesheet">
     <link href="../css/register.css" rel="stylesheet">
     <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/v2.034/512px/1f396.png">
     <title>Register</title>
@@ -17,7 +17,7 @@
 
         <div style="width: 100%">
             <h1>Welcome new citizen!</h1>
-            <div id="return_main" onclick="location.href='main_page.html'" class="orange_yellow_btn">↩</div>
+            <div onclick="location.href='main_page.html'" class="orange_yellow_btn return_main">↩</div>
         </div>
 
 
@@ -36,7 +36,7 @@
             <div class="popup hidden">
                 <label for="lastname">Last Name</label><br>
                 <input type="text" id="lastname" class="text-input" placeholder="Enter your surname">
-                <span class="popuptext" id="popup_lname">Plesae enter a valid last name.
+                <span class="popuptext" id="popup_lname">Please enter a valid last name.
                     Spaces and special characters others than
                     'é','è' and '-' are forbidden.
                 </span>
@@ -69,7 +69,7 @@
 
             <div class="popup hidden">
                 <label for="phone_n">Phone N°(optional)</label><br>
-                <input type="number" id="phone_n" class="text-input"  placeholder="Enter Your Phone Number">
+                <input type="text" id="phone_n" class="text-input"  placeholder="Enter Your Phone Number">
                 <span class="popuptext" id="popup_phone">Please enter a valid phone number, maximum 12 digits.
                 </span>
             </div>
@@ -98,7 +98,7 @@
 
         </form>
 
-        <input type="submit" value="Register" id="register_btn" class="orange_yellow_btn" onclick="check_input_rgst()">
+            <input type="submit" value="Register" id="register_btn" class="orange_yellow_btn" onclick="check_input_rgst()">
     </div>
 
 </body>

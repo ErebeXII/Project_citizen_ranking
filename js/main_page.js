@@ -66,7 +66,8 @@ function loadTableFromJSON(){
                         rank.innerHTML = (i+1).toString();
                         break;
                 }
-
+                rank.style.width = "10%";
+                score.style.width = "10%";
                 //console.log(data[i]);
                 surname.innerHTML = data[i]['last_name'];
                 name.innerHTML = data[i]['first_name'];

@@ -20,37 +20,27 @@ body{
 }
 
 header{
-    width: 100vw;
+    width: 90vw;
+    height: 5vh;
+    padding: 1.5em;
+    margin: 0.5em 2em 0em 2em;
+    border-radius: 0.5em;
+    background-color: rgba(255,255,255,0.8);
     display: flex;
     flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    justify-content: space-between;
 }
 
-#title_header{
-    background-color: rgba(255,170,0,0.9);
+#go_login_btn, #go_register_btn{
+    width: 8%;
     text-align: center;
-    width: 100%;
-    margin: 0;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding: 1em;
+    border-radius: 0.5em;
+    margin: 0 3% 0 3%;
 }
 
-#register_btn{
-    background-color: rgba(255,170,0,0.9);
-    padding-left: 3em;
-}
-
-#register_btn h2{
-    margin: 0.3em 0 0;
-}
-
-#login_btn{
-    background-color: rgba(255,170,0,0.9);
-    padding-right: 3em;
-}
-
-#login_btn h2{
-    margin: 0.3em 0 0;
-}
 
 #wrapper1{
     display: flex;
@@ -68,11 +58,11 @@ header{
 }
 
 #input_citizen{
-    text-align: center;
+    text-align: left;
     border-radius: 0.5em;
     border: solid black 0.1em;
     padding: 0.5em 1em 0.5em 1em;
-    background-color: #607080;
+    background-color: rgba(255,255,255,0.8);
     max-width: 40vw;
     width: 40vw;
     max-height: 30vh;
@@ -103,19 +93,21 @@ header{
     justify-content: center;
     width: 60%;
     height: 35vh;
-    background-color: #607080;
+    background-color: transparent;
     overflow-y: scroll;
     overflow-x:hidden ;
     padding: 0 1em 0.5em 1em;
-    border: solid black 0.1em;
-    border-radius: 0.5em;
+
 }
 
 #ranking_table{
     border-collapse: separate;
+    -webkit-border-vertical-spacing: 0.2em;
+    -webkit-border-horizontal-spacing: 0.2em;
     width: 60vw;
-
 }
+
+
 .fixTableHead {
     overflow-y: scroll;
     height: 60em;
@@ -123,15 +115,18 @@ header{
 .fixTableHead thead th{
     position: sticky;
     top: 0;
-    background-color: slategrey;
+    background-color: rgba(220,220,220);
     padding: 0.5em;
-    border: solid black 0.1em;
+    border-radius: 0.1em;
 }
-
 
 #ranking_table td{
     width: 25%;
-    border: solid black 0.1em;
+    padding: 0 0.3em 0 0.3em  ;
+    border-radius: 0.1em;
+    background-color: rgba(150,150,150);
+    color: white;
+    text-align: center;
 }
 
 #wrapper2{
@@ -155,7 +150,6 @@ header{
     text-align: center;
     cursor: pointer;
     border-radius: 0.5em;
-    border: solid black 0.1em;
     padding: 0.5em 1em 0.5em 1em;
     background-color: #607080;
 }
@@ -166,26 +160,6 @@ span.input[contenteditable] { /*I'm using span to change the size of the div acc
 span.input[contenteditable]:empty::before {
     content: attr(data-placeholder);
     display: inline-block;
-}
-
-.scrollable_div::-webkit-scrollbar {
-    width: 1em;
-}
-
-/* Track */
-.scrollable_div::-webkit-scrollbar-track {
-    border-radius: 0.5em;
-}
-
-/* Handle */
-.scrollable_div::-webkit-scrollbar-thumb {
-    background: orange;
-    border-radius: 0.5em;
-}
-
-/* Handle on hover */
-.scrollable_div::-webkit-scrollbar-thumb:hover {
-    background: coral;
 }
 
 

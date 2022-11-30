@@ -77,25 +77,31 @@ function load_dlCities(){
 }
 
 function check_input_rgst(){
+    let input_correct = true;
 
-    check_name();
+    if (!check_mail())
+        input_correct = false;
+    if (!check_phone())
+        input_correct = false;
+    if (!check_address())
+        input_correct = false;
+    if (!check_pswd())
+        input_correct = false;
+    if (!check_city())
+        input_correct = false;
+    if (!check_bday())
+        input_correct = false;
+    if (!check_name())
+        input_correct = false;
 
-    check_bday();
-
-    check_city();
-
-    check_pswd();
-
-    check_address();
-
-    check_phone();
-
-    check_mail();
+    return input_correct;
 }
 
 const letter_re = new RegExp('([a-z]|-|é|è){1,20}');
 const nb_re = new RegExp('\\d{1,12}');
 const mail_re = new RegExp('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$');
+const phone_re = new RegExp('^(\\d{3} ){2}\\d{4}$' );
+
 
 function check_name(){
     let el_fname =   document.getElementById('firstname');
@@ -168,8 +174,6 @@ function check_address(){
     let street = el_street.value.toLowerCase();
     let city = el_city.value.toLowerCase();
 
-    console.log(nb_re.test(nb));
-
     if (!nb_re.test(nb) || !letter_re.test(street) || !letter_re.test(city)){
         setWarning(el_nb, "popup_address");
         setWarning(el_street, "popup_address");
@@ -184,7 +188,7 @@ function check_phone(){
     let el_phone = document.getElementById('phone_n');
     let phone = el_phone.value;
 
-    if(!nb_re.test(phone)){
+    if(phone!== "" && !phone_re.test(phone)){
         setWarning(el_phone, "popup_phone");
         return false;
     }
@@ -195,7 +199,7 @@ function check_mail(){
     let el_mail = document.getElementById('e-mail');
     let mail = el_mail.value;
 
-    if(!mail_re.test(mail)){
+    if(mail !=="" && !mail_re.test(mail)){
         setWarning(el_mail, "popup_mail");
         return false;
     }

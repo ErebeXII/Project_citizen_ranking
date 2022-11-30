@@ -1,0 +1,88 @@
+
+.text-input{
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    border-bottom: black solid 0.1em;
+    transition: ease-in-out, width .35s ease-in-out, color 1s;
+    font-family: "Courier New", serif;
+}
+
+.text-input:focus{
+    width: 110%;
+    transition: ease-in-out, width .35s ease-in-out, color 1s;
+    outline: none;
+    border-bottom: black solid 0.2em;
+}
+
+.text-input:focus::placeholder{
+    color: transparent;
+    transition: color 0.5s;
+}
+
+.text-input::placeholder{
+    color: black;
+    transition: color 1s;
+}
+
+.orange_yellow_btn {
+    background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+    transition: 0.5s;
+    color: white;
+    background-size: 200% auto;
+    cursor: pointer;
+}
+
+.orange_yellow_btn:hover {
+    background-position: center center;
+}
+
+.dark_orange_pink_btn {
+    background-image: linear-gradient(to right, #D38312 0%, #A83279  51%, #D38312  100%);
+    transition: 0.5s;
+    color: white;
+    background-size: 200% auto;
+    cursor: pointer;
+}
+
+.dark_orange_pink_btn:hover {
+    background-position: center center;
+}
+
+.return_main{
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    font-size: 15pt;
+    font-weight: bolder;
+    color: #eeeeee;
+    top: 5%;
+    right:5%;
+    padding: 1em;
+    background-color: #607080;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.5s;
+    background-size: 200% auto;
+}
+
+.scrollable_div::-webkit-scrollbar {
+    width: 1em;
+}
+
+/* Track */
+.scrollable_div::-webkit-scrollbar-track {
+    border-radius: 0.5em;
+}
+
+/* Handle */
+.scrollable_div::-webkit-scrollbar-thumb {
+    background: orange;
+    border-radius: 0.5em;
+}
+
+/* Handle on hover */
+.scrollable_div::-webkit-scrollbar-thumb:hover {
+    background: coral;
+}
+
