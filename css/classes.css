@@ -1,4 +1,8 @@
 
+*{
+    font-family: "Courier New", serif;
+}
+
 .text-input{
     width: 100%;
     background-color: transparent;
@@ -29,6 +33,7 @@
     background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
     transition: 0.5s;
     color: white;
+    font-weight: 900;
     background-size: 200% auto;
     cursor: pointer;
 }
@@ -41,6 +46,7 @@
     background-image: linear-gradient(to right, #D38312 0%, #A83279  51%, #D38312  100%);
     transition: 0.5s;
     color: white;
+    font-weight: 900;
     background-size: 200% auto;
     cursor: pointer;
 }

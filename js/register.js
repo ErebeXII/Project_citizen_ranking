@@ -97,8 +97,15 @@ function check_input_rgst(){
     return input_correct;
 }
 
-const letter_re = new RegExp('([a-z]|-|é|è){1,20}');
-const nb_re = new RegExp('\\d{1,12}');
+function submitRegisterForm(){
+    let form = document.getElementById("register_form");
+    if (check_input_rgst()){
+        form.submit();
+    }
+}
+
+const letter_re = new RegExp('^([a-z]|-|é|è){1,20}$');
+const nb_re = new RegExp('^\\d{1,12}$');
 const mail_re = new RegExp('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$');
 const phone_re = new RegExp('^(\\d{3} ){2}\\d{4}$' );
 

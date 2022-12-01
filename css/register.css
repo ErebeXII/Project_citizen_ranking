@@ -40,12 +40,12 @@ body{
     text-align: center;
 }
 
-#wrapper1_sub1{
+#register_form{
     width: 90%;
     justify-content: center;
 }
 
-#wrapper1_sub1 div{
+#register_form div{
     width: 28%;
     height: 20%;
     display: inline-block;
@@ -91,7 +91,7 @@ input[type=number]::-webkit-outer-spin-button {
         padding: 5vh 0 2vh 0;
     }
 
-    #wrapper1_sub1 div{
+    #register_form div{
         margin: 2vh 0 2vh 0;
         width: 80%;
     }
