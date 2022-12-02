@@ -7,15 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Select the user level :</h2>
-    <form action="" method="post">
-        <select id="level" name="level">
-            <option value=1>1</option> 
-            <option value=2>2</option>
-            <option value=3>3</option>
-        </select>
-        <input type="submit" class="btn" value="submit" name="submit">
-    </form>
+    <h2>User List</h2>
     
 </body>
 </html>
@@ -29,31 +21,33 @@ if (isset($_SESSION['last_name'])) {
     echo 'Gotcha Mr./Ms.' . $_SESSION['last_name'];
 }
 
-if (isset($_POST["submit"])) {
-    $toSearch = $_POST["level"];
-    $query = "SELECT * FROM mock_data where status = $toSearch";
+if (isset($_SESSION["status"])) {
+    $currentStatus = $_SESSION["status"]; // We define a new variable to be able to use it inside the query
+    $query = "SELECT * FROM people where status >= '$currentStatus'";
+    $results = mysqli_query($connection, $query);
+
+    echo "
+    <h1>User List :</h1>
+    <table>
+    <tr>
+        <th>ID</th>
+        <th>last name</th>
+    </tr>";
+    while ($row = mysqli_fetch_assoc($results)) {
+        echo '<tr>';
+        echo '<td>' . $row['id'] .'</td>';
+        echo '<td>' . $row['last_name'] .'</td>';
+        echo '</th>';
+    }
+
+    echo '</table>';
 } else {
-    $query = "SELECT * FROM mock_data";
+    echo 'not logged in';
 }
 
 
 
-$results = mysqli_query($connection, $query);
 
-echo "
-<h1>User List :</h1>
-<table>
-<tr>
-    <th>ID</th>
-    <th>last name</th>
-</tr>";
-while ($row = mysqli_fetch_assoc($results)) {
-    echo '<tr>';
-    echo '<td>' . $row['id'] .'</td>';
-    echo '<td>' . $row['last_name'] .'</td>';
-    echo '</th>';
-}
-echo '</table>';
 
 ?>
 

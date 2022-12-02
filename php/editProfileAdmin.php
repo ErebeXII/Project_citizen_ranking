@@ -3,7 +3,7 @@ session_start();
 include 'DBConnection.php';
 
 $uid = $_GET['ID'];
-$query = "SELECT * FROM tblstudents WHERE ID = '$uid'";
+$query = "SELECT * FROM people WHERE ID = '$uid'";
 $result = mysqli_fetch_assoc($connection, $query);
 $row = mysqli_fetch_assoc($result);
 
@@ -15,7 +15,7 @@ if (isset($_POST['btnUpdate'])) {
     // TODO : Add the option to change other user's info
 
     // TODO : Change the query once the DB Rows are fully set
-    $updateQuery = "UPDATE `tblstudents` SET `firstname` = '$fname', `lastname` = '$lname', `email` = '$email' WHERE ID = $uid ";
+    $updateQuery = "UPDATE `people` SET `firstname` = '$fname', `lastname` = '$lname', `email` = '$email' WHERE ID = $uid ";
     if (mysqli_query($connection, $updateQuery)) {
         echo "Profile has been updated !";
         header("Location:list3.php");

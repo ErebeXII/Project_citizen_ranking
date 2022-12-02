@@ -6,7 +6,7 @@ include 'DBConnection.php';
 if (isset($_POST['submit'])) {
     $email = $_POST['txtEmail'];
     $password = $_POST['txtPassword']; // We should md5 it but this is a WIP
-    $query = "SELECT * FROM mock_data WHERE last_name = '$email' AND pwd = '$password'";
+    $query = "SELECT * FROM people WHERE last_name = '$email' AND pwd = '$password'";
     $result = mysqli_query($connection, $query);
     $row = mysqli_fetch_assoc($result);
     $count = mysqli_num_rows($result);
@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['last_name'] = $row['last_name'];
         $_SESSION['first_name'] = $row['first_name'];
         $_SESSION['email'] = $row['email'];
-        $_SESSION['status'] = $row[]
+        $_SESSION['status'] = $row['status'];
 
         echo '<hr>';
         echo 'Fullname : ' . $_SESSION['last_name'] . $_SESSION['first_name'] . '<br>';

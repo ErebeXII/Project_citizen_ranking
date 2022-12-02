@@ -12,7 +12,9 @@ if (isset($_POST['txtPwd'])) {
     $txtStreet = $_POST['txtStreetNB'] . $_POST['txtStreetName'];
     $txtPhone = $_POST['txtPhone'];
 
-    $query = "INSERT INTO `mock_data`(`pwd`, `last_name`, `first_name`, `birthday`, `place_of_birth`, `city`, `street`, `phone`, `violation_class_1`, `violation_class_2`, `violation_class_3`) VALUES ('$txtPwd','$txtLName','$txtFName','$txtBDay','$txtPOB','$txtCity','$txtStreet','$txtPhone','0','0','0')";
+// The query needs to be updated to create first and address if need be and then add someone
+
+    $query = "INSERT INTO `people`(`pwd`, `last_name`, `first_name`, `birthday`, `place_of_birth`, `city`, `street`, `phone`, `violation_class_1`, `violation_class_2`, `violation_class_3`) VALUES ('$txtPwd','$txtLName','$txtFName','$txtBDay','$txtPOB','$txtCity','$txtStreet','$txtPhone','0','0','0')";
 
     if (mysqli_query($connection, $query)) {
         echo 'Less gooooooo';
