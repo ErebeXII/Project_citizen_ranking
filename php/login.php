@@ -16,6 +16,8 @@ if (isset($_POST['submit'])) {
         $_SESSION['uid'] = $row['id'];
         $_SESSION['last_name'] = $row['last_name'];
         $_SESSION['first_name'] = $row['first_name'];
+        $_SESSION['email'] = $row['email'];
+        $_SESSION['status'] = $row[]
 
         echo '<hr>';
         echo 'Fullname : ' . $_SESSION['last_name'] . $_SESSION['first_name'] . '<br>';
