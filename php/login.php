@@ -5,7 +5,7 @@ include 'DBConnection.php';
 
 if (isset($_POST['submit'])) {
     $email = $_POST['txtEmail'];
-    $password = $_POST['txtPassword']; // We should md5 it but this is a WIP
+    $password = md5($_POST['txtPassword']);
     $query = "SELECT * FROM people WHERE last_name = '$email' AND pwd = '$password'";
     $result = mysqli_query($connection, $query);
     $row = mysqli_fetch_assoc($result);
