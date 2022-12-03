@@ -4,7 +4,7 @@ include 'DBConnection.php';
 
 
 $uid = $_GET['ID'];
-$query = "SELECT * FROM tblstudents WHERE ID = '$uid'";
+$query = "SELECT * FROM people WHERE ID = '$uid'";
 $result = mysqli_fetch_assoc($connection, $query);
 $row = mysqli_fetch_assoc($result);
 
