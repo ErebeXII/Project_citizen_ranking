@@ -163,7 +163,7 @@ if (isset($_POST['txtPwd'])) {
 
         </form>
 
-            <input type="submit" form="register_form" value="Register" id="register_btn" class="orange_yellow_btn" onclick="submitRegisterForm()">
+        <input type="button" form="register_form" value="Register" id="register_btn" class="orange_yellow_btn" onclick="submitRegisterForm()">
     </div>
 
 </body>
