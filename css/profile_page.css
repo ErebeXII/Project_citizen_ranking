@@ -25,7 +25,7 @@ body{
     justify-items: center;
     justify-content: space-between;
     width: 90vw;
-    height: 40vh;
+    height: 42vh;
 }
 
 #pp{
@@ -45,12 +45,20 @@ body{
 
 #personal_data div{
     display: inline-block;
+    max-width: 90%;
     margin: 1% 3% 1% 3%;
 }
 
 #personal_data span{
     border-radius: 0.5em;
+    max-height: 2em;
+    max-width: 100%;
+    float: left;
     transition: padding 1s;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
 }
 
 
@@ -59,8 +67,9 @@ body{
     flex-direction: row;
     align-items: center;
     justify-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin: 3% 0 0 0;
+    max-width: none;
     width: 100%;
 
 }
@@ -120,3 +129,4 @@ body{
         width: 100%;
     }
 }
+

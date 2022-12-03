@@ -32,11 +32,13 @@ function editCSSChanges(elmnt, reset){
     if (reset !== true){
         elmnt.style.backgroundColor = "rgb(0, 255, 46)";
         elmnt.style.padding = ".5em";
+        elmnt.style.border = "solid black 0.1em";
         elmnt.contentEditable = true;
     }
     else {
         elmnt.style.backgroundColor = "transparent";
         elmnt.style.padding = "0";
+        elmnt.style.border = "0";
         elmnt.contentEditable = false;
     }
 }
