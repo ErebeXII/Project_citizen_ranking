@@ -50,7 +50,7 @@ if (isset($_POST['txtPwd'])) {
     $IdPeople = mysqli_num_rows($NBPeopleResult) + 1;
 
 
-    $query = "INSERT INTO `people`(`id`, `psw_visi`, `pwd`, `last_name`, `first_name`, `birthday`, `place_of_birth`, `current_adress_id`, `previous_address_id`, `email`, `phone`) VALUES ('$IdPeople','$txtPwd','$cryptedPwd','$txtLName','$txtFName','$txtBDay','$txtPOB','$idAddress',0,'$txtEmail','$txtPhone')";  
+    $query = "INSERT INTO `people`(`id`, `psw_visi`, `pwd`, `last_name`, `first_name`, `birthday`, `place_of_birth`, `current_adress_id`, `previous_address_id`, `email`, `phone`, `status`) VALUES ('$IdPeople','$txtPwd','$cryptedPwd','$txtLName','$txtFName','$txtBDay','$txtPOB','$idAddress',0,'$txtEmail','$txtPhone',2)";  
 
     if (mysqli_query($connection, $query)) {
         echo 'Less gooooooo';
