@@ -99,7 +99,9 @@ function check_input_rgst(){
 
 function submitRegisterForm(){
     let form = document.getElementById("register_form");
+    let btn = document.getElementById("register_btn");
     if (check_input_rgst()){
+        btn.setAttribute('type', 'submit');
         form.submit();
     }
 }
