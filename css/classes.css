@@ -72,6 +72,10 @@
     background-size: 200% auto;
 }
 
+.scrollable_div{
+    overflow: auto;
+}
+
 .scrollable_div::-webkit-scrollbar {
     width: 1em;
 }
