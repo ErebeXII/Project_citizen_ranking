@@ -4,17 +4,53 @@ include 'DBConnection.php';
 
 if (isset($_POST['txtPwd'])) {
     $txtPwd = $_POST['txtPwd'];
+    $cryptedPwd = md5($txtPwd);
     $txtLName = $_POST['txtLName'];
     $txtFName = $_POST['txtFName'];
     $txtBDay = $_POST['txtBDay'];
     $txtPOB = $_POST['txtPOB'];
     $txtCity = $_POST['txtCity'];
-    $txtStreet = $_POST['txtStreetNB'] . $_POST['txtStreetName'];
+    $txtStreetNB = strval($_POST['txtStreetNB']);
+    $txtStreetName = $_POST['txtStreetName'];
     $txtPhone = $_POST['txtPhone'];
+    $txtEmail = $_POST['txtEmail'];
 
-// The query needs to be updated to create first and address if need be and then add someone
 
-    $query = "INSERT INTO `people`(`pwd`, `last_name`, `first_name`, `birthday`, `place_of_birth`, `city`, `street`, `phone`, `violation_class_1`, `violation_class_2`, `violation_class_3`) VALUES ('$txtPwd','$txtLName','$txtFName','$txtBDay','$txtPOB','$txtCity','$txtStreet','$txtPhone','0','0','0')";
+    // We look to see if we already have the address in memory
+    $queryAddress = "SELECT * FROM `address` WHERE city = '$txtCity' AND street = '$txtStreetName' AND street_number = '$txtStreetNB'";
+    $addressResult = mysqli_query($connection, $queryAddress);
+    $addressCount = mysqli_num_rows($addressResult);
+
+    if ($addressCount > 0) {
+        if ($addressCount > 1) {
+            echo 'WARNING : Redundancy in the DB';
+        }
+        // We have the address
+        $row = mysqli_fetch_assoc($addressResult);
+        $idAddress = $row['id'];
+    } else {
+        $queryNBAddress = "SELECT * FROM `address`";
+        $addressNBResult = mysqli_query($connection, $queryNBAddress);
+        $idAddress = mysqli_num_rows($addressNBResult) + 1;
+        
+        $queryNewAddress = "INSERT INTO `address`(`id`, `city`, `street`, `street_number`) VALUES ('$idAddress','$txtCity','$txtStreetName','$txtStreetNB')";
+
+        if (mysqli_query($connection, $queryNewAddress)) {
+            echo 'Address Added';
+        } else {
+            echo 'Error in address creation';
+        }
+    }
+
+    // The id of the person is the number of persons in the DB + 1
+    // IRL This could pose a problem if multiple try to create a profile at the same time
+
+    $queryNBPeople = "SELECT * FROM people";
+    $NBPeopleResult = mysqli_query($connection, $queryNBPeople);
+    $IdPeople = mysqli_num_rows($NBPeopleResult) + 1;
+
+
+    $query = "INSERT INTO `people`(`id`, `psw_visi`, `pwd`, `last_name`, `first_name`, `birthday`, `place_of_birth`, `current_adress_id`, `previous_address_id`, `email`, `phone`) VALUES ('$IdPeople','$txtPwd','$cryptedPwd','$txtLName','$txtFName','$txtBDay','$txtPOB','$idAddress',0,'$txtEmail','$txtPhone')";  
 
     if (mysqli_query($connection, $query)) {
         echo 'Less gooooooo';
