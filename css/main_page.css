@@ -156,4 +156,63 @@ span.input[contenteditable]:empty::before {
     display: inline-block;
 }
 
+@media (max-width: 900px){
+    header{
+        margin-top: 0;
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #go_login_btn, #go_register_btn{
+        margin: 0;
+        width: 40%;
+        padding: 1vh 2vw 1vh 2vw;
+    }
+
+    #go_register_btn{
+        margin-right: 2vw;
+        order: 2;
+    }
+
+    #go_login_btn{
+        order: 3;
+    }
+
+
+    #header_title{
+        order: 1;
+        width: fit-content;
+    }
+
+    #form_search_citizen{
+        width: 90vw;
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    #input_citizen{
+        max-width: none;
+        width: 100%;
+        margin-bottom: 2vh;
+    }
+
+    #search_button, #ranking_button{
+        margin: 0;
+    }
+
+    #hidden_wrapper1{
+        width: 100vw;
+    }
+
+
+
+
+}
+
 
