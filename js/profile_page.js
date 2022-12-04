@@ -1,10 +1,16 @@
 let edit_data = false;
 
+const mail_re = new RegExp('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$');
+const phone_re = new RegExp('^(\\d{3} ){2}\\d{4}$' );
+const address_re = new RegExp('^([a-zA-Z]|\\d|\\s){3,}$');
+
+
+
 function editPersonalData(){
+    let edit = document.getElementById("edit_btn");
     let address = document.getElementById("current_address");
     let mail = document.getElementById("mail_data");
     let phone = document.getElementById("phone_data");
-    let edit = document.getElementById("edit_btn");
 
     if (!edit_data){
         edit_data = true;
@@ -15,7 +21,7 @@ function editPersonalData(){
         editCSSChanges(phone);
 
     }
-    else {
+    else if (checkDataChange()){
         edit_data = false;
         edit.innerHTML = "&#9999;&#65039;";
 
@@ -25,6 +31,27 @@ function editPersonalData(){
 
     }
 
+}
+
+function checkDataChange(){
+
+    let address = document.getElementById("current_address");
+    let mail = document.getElementById("mail_data");
+    let phone = document.getElementById("phone_data");
+
+    let input_correct = true;
+
+    if (!phone_re.test(phone.innerHTML))
+        input_correct = false;
+
+    if (!mail_re.test(mail.innerHTML))
+        input_correct = false;
+
+    if (!address_re.test(address.innerHTML))
+        input_correct = false;
+
+
+    return input_correct;
 }
 
 function editCSSChanges(elmnt, reset){
