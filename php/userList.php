@@ -17,11 +17,9 @@
 session_start();
 include 'DBConnection.php';
 
-if (isset($_SESSION['last_name'])) {
-    echo 'Hello Mr./Ms.' . $_SESSION['last_name'] . '<br>';
-}
 
 if (isset($_SESSION["status"])) {
+    echo 'Hello Mr./Ms.' . $_SESSION['last_name'] . '<br>';
     $currentStatus = $_SESSION["status"];
     if ($currentStatus < 2) {
         if ($currentStatus == 0) {
