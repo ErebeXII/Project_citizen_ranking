@@ -8,6 +8,7 @@
     <link href="../css/classes.css" rel="stylesheet">
     <link href="../css/main_page.css" rel="stylesheet">
     <script src="../js/main_page.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/v2.034/512px/1f396.png">
     <title>Citizen Ranking</title>
 </head>
@@ -27,10 +28,10 @@
             &#128512
         </h1>
     </div>
-    <form id="form_search_citizen">
-        <span class="input" role="textbox" id="input_citizen" data-placeholder="Tell us who you are" contenteditable></span>
-        <div id="search_button" class="myButtons orange_yellow_btn" onclick=window.location.href="https://www.google.com/" >Search</div>
-        <div id="ranking_button" class="myButtons dark_orange_pink_btn" onclick="rankingTable()">Rankings</div>
+    <form id="form_search_citizen" method="post" action="">
+        <input class="input" role="textbox" id="input_citizen" name="input_citizen" data-placeholder="Tell us who you are" contenteditable>
+        <input id="search_button" type="submit" class="myButtons orange_yellow_btn" value="Search">
+        <input id="ranking_button" type="button" class="myButtons dark_orange_pink_btn" onclick="rankingTable()" value="Rankings">
     </form>
 
 </div>

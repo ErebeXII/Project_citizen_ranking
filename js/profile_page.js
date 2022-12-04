@@ -69,3 +69,4 @@ function editCSSChanges(elmnt, reset){
         elmnt.contentEditable = false;
     }
 }
+

@@ -112,5 +112,10 @@ function noMoreFunnyEmoji(emoji){
 }
 
 
+function updateWithScore(score){
+
+    console.log(score);
+}
+
 
 
