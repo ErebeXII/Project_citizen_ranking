@@ -21,9 +21,13 @@ if (isset($_POST['submit'])) {
         echo '<hr>';
         echo 'Fullname : ' . $_SESSION['last_name'] . $_SESSION['first_name'] . '<br>';
 
-        header("Location: userList.php");
+        if ($row['status'] == 2) {
+            header("Location: profile_page.php");
+        } else {
+            header("Location: userList.php");
+        }
     } else {
-        echo 'invalid credentials';
+        echo '<script>alert("Invalid Credentials")</script>';
     }
 }
 ?>
@@ -52,7 +56,7 @@ if (isset($_POST['submit'])) {
       <h1>Hello Citizen !</h1>
       <form id="login_form" action="" method="post">
           <div>
-              <label for="username">Username</label><br />
+              <label for="username">Email</label><br />
               <input type="text" id="username" class="text-input" name="txtEmail" placeholder="👤   Enter your email"><br /><br>
           </div>
           <div>

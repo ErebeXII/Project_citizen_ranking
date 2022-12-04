@@ -48,7 +48,7 @@ if (isset($_SESSION["status"])) {
             }
         } else {
 
-            // This is a simple admin
+            // This is a simple admin, the difference is the admin doesn't see other admins
 
             $query = "SELECT * FROM people where status >= '$currentStatus'";
             $results = mysqli_query($connection, $query);
