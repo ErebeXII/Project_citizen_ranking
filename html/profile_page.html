@@ -9,6 +9,7 @@
     <link href="../css/profile_page.css" rel="stylesheet">
     <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/v2.034/512px/1f396.png">
     <script src="../js/profile_page.js"></script>
+    <script src="../js/register.js"></script>
     <title>Your Page</title>
 </head>
 <body>
@@ -24,33 +25,39 @@
             <h3>Last Name</h3>
             <p>Forger</p>
         </div>
-        <div>
+        <div >
             <h3>First Name</h3>
             <p>Loid</p>
-        </div>
+        </div >
 
-        <div>
+        <div >
             <h3>Date Of Birth</h3>
             <p>00/00/0000</p>
         </div>
-        <div>
+        <div >
             <h3>Place Of Birth</h3>
             <p>Konoha</p>
         </div>
 
 
-        <div>
+        <div class="popup hidden">
             <h3>Current Address</h3>
             <span id="current_address">5 Vahalla Street Vahala</span>
+            <span class="popuptext" id="popup_address">Please enter a valid address.
+                </span>
         </div>
-        <div>
+        <div class="popup hidden">
             <h3>E-Mail</h3>
             <span id="mail_data">jesus@godKingdom.com</span>
+            <span class="popuptext" id="popup_mail">Please enter a valid e-mail address.
+                </span>
         </div>
 
-        <div>
+        <div class="popup hidden">
             <h3>Phone Number</h3>
             <span id="phone_data">123 456 7890</span>
+            <span class="popuptext" id="popup_phone">Please enter a valid phone number with the following format : 000 000 0000
+                </span>
         </div>
 
 

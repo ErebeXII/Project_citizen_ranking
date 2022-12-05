@@ -1,7 +1,7 @@
+
+
 let edit_data = false;
 
-const mail_re = new RegExp('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$');
-const phone_re = new RegExp('^(\\d{3} ){2}\\d{4}$' );
 const address_re = new RegExp('^([a-zA-Z]|\\d|\\s){3,}$');
 
 
@@ -41,8 +41,10 @@ function checkDataChange(){
 
     let input_correct = true;
 
-    if (!phone_re.test(phone.innerHTML))
+    if (!phone_re.test(phone.innerHTML)){
+        setWarning(document.getElementById("phone_data"), "popup_phone");
         input_correct = false;
+    }
 
     if (!mail_re.test(mail.innerHTML))
         input_correct = false;

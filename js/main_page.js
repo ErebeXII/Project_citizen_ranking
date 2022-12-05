@@ -112,7 +112,7 @@ function noMoreFunnyEmoji(emoji){
 }
 
 
-function updateWithScore(score){
+function searchCitizen(score, fname, lname){
 
     console.log(score);
 }
