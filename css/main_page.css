@@ -184,7 +184,8 @@ span.input[contenteditable]:empty::before {
 
     #header_title{
         order: 1;
-        width: fit-content;
+        width: 100%;
+        text-align: center;
     }
 
     #form_search_citizen{
@@ -209,9 +210,6 @@ span.input[contenteditable]:empty::before {
     #hidden_wrapper1{
         width: 100vw;
     }
-
-
-
 
 }
 
