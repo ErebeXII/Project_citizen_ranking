@@ -1,6 +1,4 @@
 
-let table_loaded = false;
-
 function rankingTable(){
 
     let wrapper = document.getElementById("hidden_wrapper1");
@@ -12,12 +10,6 @@ function rankingTable(){
         wrapper.style.display = "flex";
         window.location.href = "#ranking_table";
     }
-    if (!table_loaded){
-        //loadTable();
-        loadTableFromJSON("../json/top_score.json");
-        table_loaded = true;
-    }
-
 }
 
 function fetchJSON(path){
@@ -82,6 +74,50 @@ function loadTableFromJSON(){
             }
         }
     )
+}
+
+function loadTableFromPHP(rank, fname, lname, score){
+    let table = document.getElementById("ranking_table_body");
+    let tr = document.createElement("tr");
+    let rankTD = document.createElement("td");
+    let surnameTD = document.createElement("td");
+    let nameTD = document.createElement("td");
+    let scoreTD = document.createElement("td");
+
+    switch (rank){
+        case 0:
+            rank.innerHTML = "&#129351;";
+            tr.style.fontSize = "18pt";
+            tr.style.fontWeight = "bolder";
+            break;
+        case 1:
+            rank.innerHTML = "&#129352;";
+            tr.style.fontSize = "16pt";
+            tr.style.fontWeight = "bolder";
+            break;
+        case 2:
+            rank.innerHTML = "&#129353;";
+            tr.style.fontSize = "14pt";
+            tr.style.fontWeight = "bolder";
+            break;
+
+        default:
+            rank.innerHTML = (rank+1).toString();
+            break;
+    }
+    rank.style.width = "10%";
+    score.style.width = "10%";
+    //console.log(data[i]);
+    surnameTD.innerHTML = lname;
+    nameTD.innerHTML = fname;
+    scoreTD.innerHTML = score;
+
+    tr.appendChild(rankTD);
+    tr.appendChild(surnameTD);
+    tr.appendChild(nameTD);
+    tr.appendChild(scoreTD);
+    table.appendChild(tr);
+
 }
 
 
