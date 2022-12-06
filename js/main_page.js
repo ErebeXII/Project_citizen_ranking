@@ -85,7 +85,7 @@ function loadTableFromPHP(rank, fname, lname, score){
     let scoreTD = document.createElement("td");
     let rankInt = parseInt(rank);
 
-    switch (rank){
+    switch (rankInt){
         case 0:
             rankTD.innerHTML = "&#129351;";
             tr.style.fontSize = "18pt";
@@ -106,8 +106,6 @@ function loadTableFromPHP(rank, fname, lname, score){
             rankTD.innerHTML = (rankInt+1).toString();
             break;
     }
-    console.log(rank);
-    console.log(rank == 0);
     rankTD.style.width = "10%";
     scoreTD.style.width = "10%";
     //console.log(data[i]);
