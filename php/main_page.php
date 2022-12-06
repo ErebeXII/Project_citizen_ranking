@@ -58,7 +58,7 @@ $results = mysqli_query($connection, $query);
         </thead>
         <tbody id="ranking_table_body">
             <?php
-                for ($i=0; $i<10; $i++) {
+                for ($i=0; $i<100; $i++) {
                     $row = mysqli_fetch_assoc($results);
                     $firstName = $row['first_name'];
                     $lastName = $row['last_name'];
