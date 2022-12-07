@@ -222,15 +222,19 @@ function show_pop_up(pop_up, stop) {
         popup.classList.toggle("show");
 }
 
-function setWarning(elmnt, popup){
+function setWarning(elmnt, popup, color){
     elmnt.style.backgroundColor = "rgba(185,0,0,0.5)";
     show_pop_up(popup);
-    setTimeout(reset_warning,5000, elmnt, popup);
+    setTimeout(reset_warning,5000, elmnt, popup, color);
 }
 
-function reset_warning(elmnt, popup){
-    if (elmnt.style.backgroundColor !== 'transparent'){//avoid blinking popup if user spams register btn with wrong input
-        elmnt.style.backgroundColor = 'transparent';
+function reset_warning(elmnt, popup, color){
+    console.log(color);
+    if(color === undefined){
+        color = 'transparent';
+    }
+    if (elmnt.style.backgroundColor !== color){//avoid blinking popup if user spams register btn with wrong input
+        elmnt.style.backgroundColor = color;
         show_pop_up(popup, true);
     }
 }

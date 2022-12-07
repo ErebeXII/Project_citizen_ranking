@@ -138,7 +138,7 @@
 /* The actual popup (appears on top) */
 .popup .popuptext {
     visibility: hidden;
-    width: 50%;
+    width: fit-content;
     font-size: 10pt;
     background-color: rgb(185,0,0);
     color: #fff;

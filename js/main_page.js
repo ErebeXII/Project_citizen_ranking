@@ -12,7 +12,7 @@ function rankingTable(){
     }
 }
 
-function fetchJSON(path){
+/*function fetchJSON(path){
     return fetch(path,{
         method: "POST"
     })
@@ -74,7 +74,7 @@ function loadTableFromJSON(){
             }
         }
     )
-}
+}*/
 
 function loadTableFromPHP(rank, fname, lname, score){
     let table = document.getElementById("ranking_table_body");

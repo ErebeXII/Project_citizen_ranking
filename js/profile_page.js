@@ -1,5 +1,3 @@
-
-
 let edit_data = false;
 
 const address_re = new RegExp('^([a-zA-Z]|\\d|\\s){3,}$');
@@ -42,15 +40,19 @@ function checkDataChange(){
     let input_correct = true;
 
     if (!phone_re.test(phone.innerHTML)){
-        setWarning(document.getElementById("phone_data"), "popup_phone");
+        setWarning(phone, "popup_phone", "rgb(0, 255, 46)");
         input_correct = false;
     }
 
-    if (!mail_re.test(mail.innerHTML))
+    if (!mail_re.test(mail.innerHTML)){
+        setWarning(mail, "popup_mail", "rgb(0, 255, 46)");
         input_correct = false;
+    }
 
-    if (!address_re.test(address.innerHTML))
+    if (!address_re.test(address.innerHTML)){
+        setWarning(address, "popup_address", "rgb(0, 255, 46)");
         input_correct = false;
+    }
 
 
     return input_correct;
@@ -72,3 +74,22 @@ function editCSSChanges(elmnt, reset){
     }
 }
 
+function updatePP(gender){
+    let pp = document.getElementById("pp");
+
+    switch (gender){
+
+        case "Male":
+
+            break;
+
+        case "Female":
+
+            break;
+
+        default:
+            break;
+
+    }
+
+}
