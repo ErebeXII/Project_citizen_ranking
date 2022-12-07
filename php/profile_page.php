@@ -26,6 +26,13 @@ if (!(isset($_SESSION['uid']))) {
     } else {
         $gender = $row['gender'];
     }
+
+    $queryViolations = "SELECT * FROM violation WHERE `id_person` = '$uid'";
+    $resultViolations = mysqli_query($connection, $queryViolations);
+    $totalViolations = 0;
+    while ($rowViolations = mysqli_fetch_assoc($result)) {
+        $totalViolations += $rowViolations['point'];
+    }
     
 }
 
@@ -46,7 +53,7 @@ if (!(isset($_SESSION['uid']))) {
 </head>
 
 <?php $jsonToPass = json_encode($row);
-    echo "<script>loadProfilePage('$jsonToPass');</script>"; ?>
+    echo "<script>loadProfilePage('$jsonToPass', '$totalViolations');</script>"; ?>
 
 <body>
 <div id="wrapper1">
