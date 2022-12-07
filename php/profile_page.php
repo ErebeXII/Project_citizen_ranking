@@ -27,7 +27,7 @@ if (!(isset($_SESSION['uid']))) {
         $gender = $row['gender'];
     }
     echo "<script>updatePP('$gender');</script>";
-    echo "<sript>loadProfilePage($row);</script>;";
+    echo "<sript>loadProfilePage(json_encode($row));</script>;";
 }
 
 ?>
