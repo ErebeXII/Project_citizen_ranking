@@ -20,6 +20,14 @@ if (!(isset($_SESSION['uid']))) {
     $queryAddress = "SELECT * FROM `address` WHERE `id` = '$addressId'";
     $resultAddress = mysqli_query($connection, $queryAddress);
     $rowAddress = mysqli_fetch_assoc($resultAddress);
+
+    if ($row['status'] == 0) {
+        $gender = 'assault helicopter';
+    } else {
+        $gender = $row['gender'];
+    }
+    echo "<script>updatePP('$gender');</script>";
+    echo "<sript>loadProfilePage($row);</script>;";
 }
 
 ?>
