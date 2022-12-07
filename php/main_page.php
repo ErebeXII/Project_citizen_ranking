@@ -6,8 +6,8 @@ include 'DBConnection.php';
 $query = "SELECT * FROM `people` ORDER BY `total_point` DESC";
 $results = mysqli_query($connection, $query);
 
-
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
