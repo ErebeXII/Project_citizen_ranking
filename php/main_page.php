@@ -48,7 +48,6 @@ $results = mysqli_query($connection, $query);
 
 <div id="hidden_wrapper1" class="fixTableHead scrollable_div">
     <table id="ranking_table" >
-
         <thead>
             <tr>
                 <th>Rank</th>
@@ -61,12 +60,10 @@ $results = mysqli_query($connection, $query);
             <?php
                 for ($i=0; $i<100; $i++) {
                     $row = mysqli_fetch_assoc($results);
-                    echo '<tr>';
-                    echo '<td>' . $i+1 .'</td>';
-                    echo '<td>' . $row['last_name'] .'</td>';
-                    echo '<td>' . $row['first_name'] .'</td>';
-                    echo '<td>' . $row['total_point'] .'</td>';
-                    echo '</th>';
+                    $firstName = $row['first_name'];
+                    $lastName = $row['last_name'];
+                    $score = $row['total_point'];
+                    echo "<script>loadTableFromPHP('$i', '$firstName', '$lastName', $score);</script>";
                 }
             ?>
         </tbody>

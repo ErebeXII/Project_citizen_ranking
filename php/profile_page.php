@@ -2,16 +2,25 @@
 session_start();
 include 'DBConnection.php';
 
-// TODO : Put all php in a isset to check login
+if (!(isset($_SESSION['uid']))) {
+    header("Location: login.php");
+} else {
 
-$uid = $_SESSION['uid'];
-$query = "SELECT * FROM people WHERE `id` = '$uid'";
-$result = mysqli_query($connection, $query);
-$row = mysqli_fetch_assoc($result);
-$addressId = $row['current_adress_id'];
-$queryAddress = "SELECT * FROM `address` WHERE `id` = '$addressId'";
-$resultAddress = mysqli_query($connection, $queryAddress);
-$rowAddress = mysqli_fetch_assoc($resultAddress);
+    if (isset($_POST['edit'])) {
+        // put the edit query here
+
+        $updateQuery = "UPDATE `people` SET `email`='$txtEmail',`phone`='$txtPhone' WHERE `id` = '$id'";
+    }
+
+    $uid = $_SESSION['uid'];
+    $query = "SELECT * FROM people WHERE `id` = '$uid'";
+    $result = mysqli_query($connection, $query);
+    $row = mysqli_fetch_assoc($result);
+    $addressId = $row['current_adress_id'];
+    $queryAddress = "SELECT * FROM `address` WHERE `id` = '$addressId'";
+    $resultAddress = mysqli_query($connection, $queryAddress);
+    $rowAddress = mysqli_fetch_assoc($resultAddress);
+}
 
 ?>
 

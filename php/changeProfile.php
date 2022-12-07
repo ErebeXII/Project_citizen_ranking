@@ -14,9 +14,9 @@ if (isset($_SESSION['uid'])) {
         $updateQuery = "UPDATE `people` SET `email`='$txtEmail',`phone`='$txtPhone' WHERE `id` = '$id'";
     
         if (mysqli_query($connection, $updateQuery)) {
-            echo 'Record Updated';
+            echo '<script> console.log("Record updated");</script>';
         } else {
-            echo 'Error in update';
+            echo '<script> console.log("Error in update");</script>';
         }
     }
 
@@ -24,7 +24,7 @@ if (isset($_SESSION['uid'])) {
     $results = mysqli_query($connection, $query);
     $row = mysqli_fetch_assoc($results);
     if (mysqli_num_rows($results) > 1) {
-        echo 'error : multiple same ID';
+        echo '<script> console.log("Error : multiple identical IDs");</script>';
     } else {
         // If the person is properly logged in :
 
@@ -42,7 +42,7 @@ if (isset($_SESSION['uid'])) {
 
     }
 } else {
-    echo 'error : not logged in';
+    header("Location: login.php");
 }
 
 

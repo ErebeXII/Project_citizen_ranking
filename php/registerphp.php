@@ -23,7 +23,7 @@ if (isset($_POST['txtPwd'])) {
 
     if ($addressCount > 0) {
         if ($addressCount > 1) {
-            echo 'WARNING : Redundancy in the DB';
+            echo '<script> console.log("WARNING : Redundancy in the DB");</script>';
         }
         // We have the address
         $row = mysqli_fetch_assoc($addressResult);
@@ -36,9 +36,9 @@ if (isset($_POST['txtPwd'])) {
         $queryNewAddress = "INSERT INTO `address`(`id`, `city`, `street`, `street_number`) VALUES ('$idAddress','$txtCity','$txtStreetName','$txtStreetNB')";
 
         if (mysqli_query($connection, $queryNewAddress)) {
-            echo 'Address Added';
+            echo '<script> console.log("Address Added");</script>';
         } else {
-            echo 'Error in address creation';
+            echo '<script> console.log("Error in address creation");</script>';
         }
     }
 
@@ -53,9 +53,9 @@ if (isset($_POST['txtPwd'])) {
     $query = "INSERT INTO `people`(`id`, `psw_visi`, `pwd`, `last_name`, `first_name`, `birthday`, `place_of_birth`, `current_adress_id`, `previous_address_id`, `email`, `phone`, `status`) VALUES ('$IdPeople','$txtPwd','$cryptedPwd','$txtLName','$txtFName','$txtBDay','$txtPOB','$idAddress',0,'$txtEmail','$txtPhone',2)";  
 
     if (mysqli_query($connection, $query)) {
-        echo 'Less gooooooo';
+        echo '<script> console.log("Person added successfully");</script>';
     } else {
-        echo 'Shimata';
+        echo '<script> console.log("Error in person creation");</script>';
     }
 }
 

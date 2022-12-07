@@ -83,30 +83,31 @@ function loadTableFromPHP(rank, fname, lname, score){
     let surnameTD = document.createElement("td");
     let nameTD = document.createElement("td");
     let scoreTD = document.createElement("td");
+    let rankInt = parseInt(rank);
 
-    switch (rank){
+    switch (rankInt){
         case 0:
-            rank.innerHTML = "&#129351;";
+            rankTD.innerHTML = "&#129351;";
             tr.style.fontSize = "18pt";
             tr.style.fontWeight = "bolder";
             break;
         case 1:
-            rank.innerHTML = "&#129352;";
+            rankTD.innerHTML = "&#129352;";
             tr.style.fontSize = "16pt";
             tr.style.fontWeight = "bolder";
             break;
         case 2:
-            rank.innerHTML = "&#129353;";
+            rankTD.innerHTML = "&#129353;";
             tr.style.fontSize = "14pt";
             tr.style.fontWeight = "bolder";
             break;
 
         default:
-            rank.innerHTML = (rank+1).toString();
+            rankTD.innerHTML = (rankInt+1).toString();
             break;
     }
-    rank.style.width = "10%";
-    score.style.width = "10%";
+    rankTD.style.width = "10%";
+    scoreTD.style.width = "10%";
     //console.log(data[i]);
     surnameTD.innerHTML = lname;
     nameTD.innerHTML = fname;
