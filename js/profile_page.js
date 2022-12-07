@@ -3,7 +3,6 @@ let edit_data = false;
 const address_re = new RegExp('^([a-zA-Z]|\\d|\\s){3,}$');
 
 
-
 function editPersonalData(){
     let edit = document.getElementById("edit_btn");
     let address = document.getElementById("current_address");
@@ -72,6 +71,13 @@ function editCSSChanges(elmnt, reset){
         elmnt.style.border = "0";
         elmnt.contentEditable = false;
     }
+}
+
+function loadProfilePage(dictionary){
+    let fname = dictionary["fname"];
+    let lname = dictionary["lname"];
+    let score = dictionary["total_point"];
+    let gender = dictionary["gender"];
 }
 
 function updatePP(gender){
