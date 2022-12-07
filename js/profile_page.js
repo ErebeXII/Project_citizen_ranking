@@ -74,11 +74,24 @@ function editCSSChanges(elmnt, reset){
 }
 
 function loadProfilePage(dictionary){
-    let fname = dictionary["fname"];
+/*
+    dictionary = {"id":"27","psw_visi":"XI25UxAf9w","pwd":"7f6bffc5c2185af396209eead72bb3cb","last_name":"Bellew",
+        "first_name":"Cordy","birthday":"1965-03-06","place_of_birth":"Nushki","current_adress_id":"557",
+        "previous_address_id":"209","email":"cbellewq@indiatimes.com","phone":"981 267 6314",
+        "years_of_study":"0","gender":"Female","political_affiliation":"for","status":"0","donation":"2200",
+        "marital_status":"Married","children":"2","social_class":"popular class","salary":"500","total_point":"90"};
+*/
+
+
+    let fname = dictionary["first_name"];
     let lname = dictionary["lname"];
     let score = dictionary["total_point"];
     let gender = dictionary["gender"];
+
+    console.log(fname);
 }
+
+loadProfilePage(null);
 
 function updatePP(gender){
     let pp = document.getElementById("pp");
