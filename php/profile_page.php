@@ -26,8 +26,7 @@ if (!(isset($_SESSION['uid']))) {
     } else {
         $gender = $row['gender'];
     }
-    echo "<script>updatePP('$gender');</script>";
-    echo "<sript>loadProfilePage(json_encode($row));</script>;";
+    
 }
 
 ?>
@@ -45,8 +44,11 @@ if (!(isset($_SESSION['uid']))) {
     <script src="../js/profile_page.js"></script>
     <title>Your Page</title>
 </head>
-<body>
 
+<?php $jsonToPass = json_encode($row);
+    echo "<script>loadProfilePage('$jsonToPass');</script>"; ?>
+
+<body>
 <div id="wrapper1">
     <div id="pp">
 
