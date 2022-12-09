@@ -64,8 +64,8 @@ if (isset($_SESSION["status"])) {
                 echo '<td>' . $row['id'] .'</td>';
                 echo '<td>' . $row['last_name'] .'</td>';
                 if ($row['status'] != 0) {
-                    echo '<td> Edit </td>';
-                    echo '<td> Delete </td>';
+                    echo '<td><a href=editProfileAdmin.php?id=' . $row['id'] .'>Edit</a></td>';
+                    echo '<td><a href=deleteProfileAdmin.php?id=' . $row['id'] .'>Delete</a></td>';
                 }
                 echo '</th>';
             }
