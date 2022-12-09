@@ -16,12 +16,12 @@ if (isset($_POST['submit'])) {
         $_SESSION['uid'] = $row['id'];
         $_SESSION['last_name'] = $row['last_name'];
         $_SESSION['first_name'] = $row['first_name'];
-        $_SESSION['status'] = $row['status'];
+        $_SESSION['status'] = $row['status_person'];
 
         echo '<hr>';
         echo 'Fullname : ' . $_SESSION['last_name'] . $_SESSION['first_name'] . '<br>';
 
-        if ($row['status'] == 2) {
+        if ($_SESSION['status'] == 2) {
             header("Location: profile_page.php");
         } else {
             header("Location: userList.php");

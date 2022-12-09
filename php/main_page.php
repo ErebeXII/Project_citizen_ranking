@@ -3,7 +3,7 @@
 session_start();
 include 'DBConnection.php';
 
-$query = "SELECT * FROM `people` ORDER BY `total_point` DESC";
+$query = "SELECT * FROM `people` ORDER BY `total_points` DESC";
 $results = mysqli_query($connection, $query);
 
 ?>
@@ -62,7 +62,7 @@ $results = mysqli_query($connection, $query);
                     $row = mysqli_fetch_assoc($results);
                     $firstName = $row['first_name'];
                     $lastName = $row['last_name'];
-                    $score = $row['total_point'];
+                    $score = $row['total_points'];
                     echo "<script>loadTableFromPHP('$i', '$firstName', '$lastName', $score);</script>";
                 }
             ?>

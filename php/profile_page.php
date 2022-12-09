@@ -16,12 +16,12 @@ if (!(isset($_SESSION['uid']))) {
     $query = "SELECT * FROM people WHERE `id` = '$uid'";
     $result = mysqli_query($connection, $query);
     $row = mysqli_fetch_assoc($result);
-    $addressId = $row['current_adress_id'];
-    $queryAddress = "SELECT * FROM `address` WHERE `id` = '$addressId'";
+    $addressId = $row['current_address_id'];
+    $queryAddress = "SELECT * FROM `address` WHERE `id_address` = '$addressId'";
     $resultAddress = mysqli_query($connection, $queryAddress);
     $rowAddress = mysqli_fetch_assoc($resultAddress);
 
-    if ($row['status'] == 0) {
+    if ($row['status_person'] == 0) {
         $gender = 'assault helicopter';
     } else {
         $gender = $row['gender'];
