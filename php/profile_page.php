@@ -52,8 +52,10 @@ if (!(isset($_SESSION['uid']))) {
     <title>Your Page</title>
 </head>
 
-<?php $jsonToPass = json_encode($row);
-    echo "<script>loadProfilePage('$jsonToPass', '$totalViolations');</script>"; ?>
+<?php
+    $jsonToPass1 = json_encode($row);
+    $jsonToPass2 = json_encode($rowAddress);
+    echo "<script>loadProfilePage('$jsonToPass1', '$jsonToPass2', '$totalViolations');</script>"; ?>
 
 <body>
 <div id="wrapper1">
