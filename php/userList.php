@@ -63,7 +63,7 @@ if (isset($_SESSION["status"])) {
                 echo '<tr>';
                 echo '<td>' . $row['id'] .'</td>';
                 echo '<td>' . $row['last_name'] .'</td>';
-                if ($row['status'] != 0) {
+                if ($row['status_person'] != 0) {
                     echo '<td><a href=editProfileAdmin.php?id=' . $row['id'] .'>Edit</a></td>';
                     echo '<td><a href=deleteProfileAdmin.php?id=' . $row['id'] .'>Delete</a></td>';
                 }
@@ -76,9 +76,9 @@ if (isset($_SESSION["status"])) {
                 // if we are searching for someone
                 $firstName = $_POST['txtFName'];
                 $lastName = $_POST['txtLName'];
-                $query = "SELECT * FROM people WHERE `last_name` = '$lastName' AND `first_name` = '$firstName' AND `status` >= '$currentStatus'";
+                $query = "SELECT * FROM people WHERE `last_name` = '$lastName' AND `first_name` = '$firstName' AND `status_person` >= '$currentStatus'";
             } else {
-                $query = "SELECT * FROM people where status >= '$currentStatus'";
+                $query = "SELECT * FROM people where `status_person` >= '$currentStatus'";
             }
             $results = mysqli_query($connection, $query);
             echo "
