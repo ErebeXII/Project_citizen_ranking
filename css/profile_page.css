@@ -7,7 +7,8 @@ html{
 
 html, body {
     margin: 0;
-    height: 100%;
+    height: fit-content;
+    overflow-x: hidden ;
 }
 
 body{
@@ -16,6 +17,7 @@ body{
     justify-items: center;
     align-items: center;
     justify-content: space-evenly;
+    padding: 2vh 0 2vh 0;
 }
 
 #wrapper1{
@@ -26,6 +28,7 @@ body{
     justify-content: space-between;
     width: 90vw;
     height: 42vh;
+    margin-bottom: 2vh;
 }
 
 #pp{
@@ -33,6 +36,11 @@ body{
     width: 25%;
     border-radius: 0.5em;
     background-color: rgba(255,255,255,0.8);
+    overflow: hidden;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
 }
 
 #personal_data{
@@ -40,7 +48,7 @@ body{
     width: 60%;
     position: relative;
     border-radius: 0.5em;
-    background-color: rgba(255,255,255,0.8);
+    background-color: white;
 }
 
 #personal_data div{
@@ -88,15 +96,71 @@ body{
     align-items: center;
     justify-items: center;
     justify-content: center;
-    width: 100vw;
-    height: 45vh;
+    width: 90vw;
+    height: fit-content;
 }
 
 #score_detail{
     border-radius: 0.5em;
-    width: 90%;
-    height: 100%;
-    background-color: rgba(255,255,255,0.8);
+    padding: 1em 1em 2em 1em;
+    width: 100%;
+    height: fit-content;
+    background-color: white;
+}
+
+#score_detail_title{
+    margin: 0;
+    text-align: center;
+}
+
+#score_detail > div{ /*first div of score detail only, we don't bother with an id since the div have only a css purpose*/
+    margin: 1em 0 1em 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#score_detail label{
+    font-size: large;
+    font-weight: 800;
+    text-decoration: underline;
+    width: 100%;
+}
+
+.progress{
+    height: 2em;
+    margin: 1em 0 1em 0;
+    width: 95%;
+    background-color: darkgray;
+    border-radius: 0.5em;
+}
+
+.progress_done_minus{
+    font-family: Calibri, sans-serif;
+    color: white;
+    height: 2em;
+    width: 0;
+    border-radius: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress_done_plus{
+    font-family: Calibri, sans-serif;
+    color: white;
+    height: 2em;
+    width: 0;
+    border-radius: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#score_detail p{
+    margin: 0;
+    line-height: 2em;
 }
 
 @media (max-width: 900px) {

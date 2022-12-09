@@ -88,36 +88,57 @@ function loadProfilePage(dictionary, dic_address,violation_score){
     let score = dictionary["total_point"];
     let gender = dictionary["gender"];
 
-    updatePP(gender);
+    let nb_studies = dictionary["years_of_study"];
+    let social_class = dictionary["social_class"];
+    let salary = parseInt(dictionary["salary"]);
+    let marital_status = dictionary["marital_status"];
+    let children = parseInt(dictionary["children"]);
+    let party_opinion = dictionary["political_affiliation"];
+    let donation = parseInt(dictionary["donation"]);
+    let social_status = parseInt(dictionary["status"]);
+
+    if (dictionary["status"] === "0"){
+        updatePP();
+    }else {
+        updatePP(gender);
+
+    }
 
     loadProfileData(lname, fname, birthday, birth_place, address, mail, phone);
 
+    updateDetailScore(nb_studies, social_class, salary, violation_score, marital_status, children,
+        party_opinion, donation, social_status);
 }
 
 
 
 function updatePP(gender){
-    let pp = document.getElementById("pp");
-
-    let malepp = document.createElement("img");
-    malepp.src = "../image/male.jpg";
-
 
     switch (gender){
 
         case "Male":
-            pp.append(malepp)
+            setUpImg("../images/male.jpg");
             break;
 
         case "Female":
-
+            setUpImg("../images/female.jpg");
             break;
 
         default:
+            setUpImg("../images/admin.jpg");
             break;
 
     }
 
+}
+
+function setUpImg(path){
+    let img = document.getElementById("pp_img");
+    img.src = path;
+    img.style.width = "100%";
+    img.style.height = "auto";
+
+    return img;
 }
 
 function loadProfileData(lname, fname, bday, birth_place, address, mail, phone ){
@@ -132,6 +153,185 @@ function loadProfileData(lname, fname, bday, birth_place, address, mail, phone )
 
 }
 
-function updateDetailScore(){
+function updateDetailScore(nb_studies,social_class, salary, violation, marital_status, children, party_opinion,
+                           donation, social_status){
 
+    let status = 0;
+    let good_spirit = 0;
+    let party_fidelity = 0;
+
+    status += nb_studies*5;
+
+    switch (social_class) {
+        case "upper class":
+            status += 10
+            break
+        case "popular class":
+            status -= 10;
+            break
+        default:
+            break
+    }
+
+    switch (true){
+        case salary<1000:
+            status -= 20;
+            break
+        case salary<2000:
+            break
+        case salary<3000:
+            status += 10;
+            break
+        case salary<10000:
+            status += 20;
+            break
+        case salary > 39999:
+            status+= 50;
+            break
+        default:
+            break
+    }
+
+
+    good_spirit += violation;
+
+    switch (marital_status){
+        case "Married":
+            good_spirit+= 30;
+            break
+        case "single":
+            good_spirit -= 10;
+            break
+        case "divorced":
+            good_spirit -= 50;
+            break
+        default:
+            break
+    }
+
+    switch (children){
+        case 0:
+            good_spirit -= 20;
+            break
+        case 1:
+            good_spirit += 10;
+            break
+        case 2:
+            good_spirit += 20;
+            break
+        case 3:
+            good_spirit += 10;
+            break
+        default:
+            good_spirit += -(children-4)*10;
+            break
+    }
+
+    switch (party_opinion){
+        case "for":
+            party_fidelity += 50;
+            break
+        default:
+            party_fidelity -= 20;
+    }
+
+    switch (true){
+        case donation === 0:
+            party_fidelity -= 20;
+            break
+        case donation<100:
+            party_fidelity += 10;
+            break
+        case donation<1000:
+            party_fidelity += 30;
+            break
+        case salary<10000:
+            party_fidelity += 50;
+            break
+        case salary >= 10000:
+            party_fidelity+= 100;
+            break
+        default:
+            break
+    }
+
+    switch (social_status){
+        case 0:
+            party_fidelity+= 50;
+            break
+        case 1:
+            party_fidelity += 25;
+            break
+        default:
+            break
+    }
+
+    progressBarAdjustment("progress_societal_status", status);
+    progressBarAdjustment("progress_public_spirit", good_spirit);
+    progressBarAdjustment("progress_party_fidelity", party_fidelity);
+
+}
+
+
+function progressBarAdjustment(parent_bar, score){
+
+    let bar_detail = document.getElementById(parent_bar+"_detail");
+    parent_bar = document.getElementById(parent_bar);
+    let progress_minus = parent_bar.firstElementChild;
+    let progress_plus = parent_bar.lastElementChild;
+    let progress;
+
+    let initial_score = score;
+
+    parent_bar.style.display = "flex";
+
+    if (score <= 0){
+        parent_bar.style.flexDirection = "row-reverse";
+        progress_plus.style.width = "50%";
+        /*with row-reverse, the first element, on the right, becomes the first element on the left, thus we need to
+        * switch their order
+        * */
+        progress_plus.style.order = "1";
+        progress_minus.style.order = "2";
+        progress = progress_minus;
+        score = -score;
+
+        progress.style.background ="linear-gradient(to left, #D43629, #F51C0B)";
+        progress.style.boxShadow = "0 3px 3px -5px #D43629, 0 2px 5px #D43629";
+    }
+    else {
+        parent_bar.style.flexDirection = "row";
+        progress_minus.style.width = "50%";
+        progress = progress_plus;
+        progress.style.transition = "1s ease";
+
+        switch (true){
+            case score < 50:
+                progress.style.background ="linear-gradient(to right, #D97D21, #FF6C00)";
+                progress.style.boxShadow = "0 3px 3px -5px #D97D21, 0 2px 5px #D97D21";
+                break
+            case  score >= 50:
+                progress.style.background ="linear-gradient(to right, #67B82F, #67E80E)";
+                progress.style.boxShadow = "0 3px 3px -5px #67B82F, 0 2px 5px #67B82F";
+                break
+            default:
+                break
+        }
+    }
+
+    let percentage;
+
+    if (score >= 100){
+        percentage = 50;
+    }
+    else if (score < 10){
+        percentage = 5;
+    }
+    else{
+        percentage = score/2;
+    }
+
+    progress.style.width = percentage + "%";
+    progress.innerHTML = initial_score;
+    bar_detail.innerText += "score : "+ initial_score;
 }
