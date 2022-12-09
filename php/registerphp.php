@@ -27,13 +27,13 @@ if (isset($_POST['txtPwd'])) {
         }
         // We have the address
         $row = mysqli_fetch_assoc($addressResult);
-        $idAddress = $row['id'];
+        $idAddress = $row['id_address'];
     } else {
         $queryNBAddress = "SELECT * FROM `address`";
         $addressNBResult = mysqli_query($connection, $queryNBAddress);
         $idAddress = mysqli_num_rows($addressNBResult) + 1;
         
-        $queryNewAddress = "INSERT INTO `address`(`id`, `city`, `street`, `street_number`) VALUES ('$idAddress','$txtCity','$txtStreetName','$txtStreetNB')";
+        $queryNewAddress = "INSERT INTO `address`(`id_address`, `city`, `street`, `street_number`) VALUES ('$idAddress','$txtCity','$txtStreetName','$txtStreetNB')";
 
         if (mysqli_query($connection, $queryNewAddress)) {
             echo '<script> console.log("Address Added");</script>';
@@ -50,10 +50,11 @@ if (isset($_POST['txtPwd'])) {
     $IdPeople = mysqli_num_rows($NBPeopleResult) + 1;
 
 
-    $query = "INSERT INTO `people`(`id`, `psw_visi`, `pwd`, `last_name`, `first_name`, `birthday`, `place_of_birth`, `current_adress_id`, `previous_address_id`, `email`, `phone`, `status`) VALUES ('$IdPeople','$txtPwd','$cryptedPwd','$txtLName','$txtFName','$txtBDay','$txtPOB','$idAddress',0,'$txtEmail','$txtPhone',2)";  
+    $query = "INSERT INTO `people`(`id`, `pwd`, `last_name`, `first_name`, `birthday`, `place_of_birth`, `current_address_id`, `previous_address_id`, `email`, `phone`, `status_person`) VALUES ('$IdPeople','$cryptedPwd','$txtLName','$txtFName','$txtBDay','$txtPOB','$idAddress',0,'$txtEmail','$txtPhone',2)";  
 
     if (mysqli_query($connection, $query)) {
         echo '<script> console.log("Person added successfully");</script>';
+        header("Location: login.php");
     } else {
         echo '<script> console.log("Error in person creation");</script>';
     }

@@ -11,6 +11,10 @@ if ($_SESSION['status'] > 0) {
     header("Location: main_page.php");
 }
 
+if (!(isset($_GET['id']))) {
+    header("Location: userList.php");
+}
+
 $idToModify = $_GET['id'];
 $query = "SELECT * FROM people WHERE ID = '$idToModify'";
 $result = mysqli_query($connection, $query);

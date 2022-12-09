@@ -12,6 +12,10 @@ if ($_SESSION['status'] > 0) {
     header("Location: main_page.php");
 }
 
+if (!(isset($_GET['id']))) {
+    header("Location: userList.php");
+}
+
 $idToDelete = $_GET['id'];
 $queryInfo = "SELECT * FROM people WHERE id = '$idToDelete'";
 $resultInfo = mysqli_query($connection, $queryInfo);
