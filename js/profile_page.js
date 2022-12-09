@@ -26,6 +26,7 @@ function editPersonalData(){
         editCSSChanges(mail, true);
         editCSSChanges(phone, true);
 
+        uploadDataChanges(address, mail, phone);
     }
 
 }
@@ -134,4 +135,15 @@ function loadProfileData(lname, fname, bday, birth_place, address, mail, phone )
 
 function updateDetailScore(){
 
+}
+
+function uploadDataChanges(address, mail, phoneNB){
+    $.ajax({
+        type : "POST",  //type of method
+            url  : "profile_page.php",  //your page
+            data : { name : address.innerHTML, email : mail.innerHTML, phone : phoneNB.innerHTML },// passing the values
+            success: function(res){  
+                                    console.log("success ?");
+                    }
+    })
 }

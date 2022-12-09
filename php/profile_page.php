@@ -17,7 +17,7 @@ if (!(isset($_SESSION['uid']))) {
     $result = mysqli_query($connection, $query);
     $row = mysqli_fetch_assoc($result);
     $addressId = $row['current_address_id'];
-    $queryAddress = "SELECT * FROM `address` WHERE `id_address` = '$addressId'";
+    $queryAddress = "SELECT * FROM `address` WHERE `id` = '$addressId'";
     $resultAddress = mysqli_query($connection, $queryAddress);
     $rowAddress = mysqli_fetch_assoc($resultAddress);
 
