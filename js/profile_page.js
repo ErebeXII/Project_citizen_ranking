@@ -1,5 +1,7 @@
 let edit_data = false;
 
+let uid = 0;
+
 function editPersonalData(){
     let edit = document.getElementById("edit_btn");
     let address_nb = document.getElementById("current_address_nb");
@@ -30,6 +32,7 @@ function editPersonalData(){
         editCSSChanges(mail, true);
         editCSSChanges(phone, true);
 
+        uploadDataChanges(address_nb, address_city, address_street, phone, mail);
     }
 
 }
@@ -126,6 +129,8 @@ function loadProfilePage(dictionary, dic_address,violation_score){
 
     updateDetailScore(nb_studies, social_class, salary, violation_score, marital_status, children,
         party_opinion, donation, social_status);
+
+    uid = dictionary["id"];
 }
 
 
@@ -368,4 +373,43 @@ function progressBarAdjustment(parent_bar, score){
     progress.style.width = percentage + "%";
     progress.innerHTML = initial_score;
     bar_detail.innerText += "score : "+ initial_score;
+}
+
+function uploadDataChanges(address_nb, address_city, address_street, phone, email){
+
+    idAddress = 0;
+
+    console.log("new code 4");
+
+    $.ajax({
+        type : "POST",  //type of method
+        url  : "profile_page_update.php",  //your page
+        data : { "address_nb" : address_nb.innerText,
+                "address_city" : address_city.innerHTML,
+                "address_street" : address_street.innerText },// passing the values
+        success: function(res){
+                console.log("success ?");
+                console.log(res)
+                idAddress = res;
+                },
+        error: function(error) {
+            console.log("error");
+            console.log(error);
+        }
+    })
+
+    $.ajax({
+        type : "POST",  //type of method
+        url  : "profile_page_update.php",  //your page
+        data : { "id" : uid, "new_address" : idAddress, "email" : email.innerText, "phone" : phone.innerText },// passing the values
+        success: function(res){
+            console.log("success ?");
+            console.log(res)
+            idAddress = res;
+            },
+        error: function(error) {
+            console.log("error");
+            console.log(error);
+        }
+    })
 }

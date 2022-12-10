@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +22,8 @@
       <input type="text" id="last_name" class="text-input" name="txtLName" placeholder="Enter the last name"><br /><br>
     </div>
     <input type="submit" value="Search" class="orange_yellow_btn" name="searchBtn">
+    <input type="button" value="My Profile" class="orange_yellow_btn" name="myProfileBtn" onclick="window.location.href = 'profile_page.php'">
+
   </form>
 
   <h2 id="table_title">User List</h2>
