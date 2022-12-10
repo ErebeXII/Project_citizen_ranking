@@ -1,40 +1,43 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/v2.034/512px/1f396.png">
+  <link href="../css/user_list.css" rel="stylesheet">
+  <link href="../css/classes.css" rel="stylesheet">
+  <title>User List</title>
 </head>
 <body>
-    <h2>Search someone</h2>
-    <form id="search_form" action="" method="post">
-          <div>
-              <label for="first name">First Name</label><br />
-              <input type="text" class="text-input" name="txtFName" placeholder="Enter the first name"><br /><br>
-          </div>
-          <div>
-              <label for="last name">Last Name</label><br />
-              <input type="text" class="text-input" name="txtLName" placeholder="Enter the last name"><br /><br>
-          </div>
+  <form id="search_form" action="" method="post">
+    <h2>Search Someone</h2>
 
-          <br>
+    <div>
+      <label for="first_name">First Name</label>
+      <input type="text" id="first_name" class="text-input" name="txtFName" placeholder="Enter the first name"><br /><br>
+    </div>
+    <div>
+      <label for="last_name">Last Name</label>
+      <input type="text" id="last_name" class="text-input" name="txtLName" placeholder="Enter the last name"><br /><br>
+    </div>
+    <input type="submit" value="Search" class="orange_yellow_btn" name="searchBtn">
+  </form>
 
-          <input type="submit" value="search" class="orange_yellow_btn" name="searchBtn">
-      </form>
-    <h2>User List</h2>
-    
-</body>
-</html>
+  <h2 id="table_title">User List</h2>
+  <table>
+    <tbody><tr>
+      <th>ID</th>
+      <th>last name</th>
+      <th>Edit</th>
+      <th>Delete</th>
 
 <?php
-
 session_start();
 include 'DBConnection.php';
-
-
 if (isset($_SESSION["status"])) {
-    echo 'Hello Mr./Ms.' . $_SESSION['last_name'] . '<br>';
     $currentStatus = $_SESSION["status"];
     if ($currentStatus < 2) {
         if ($currentStatus == 0) {
@@ -49,16 +52,6 @@ if (isset($_SESSION["status"])) {
             }
             
             $results = mysqli_query($connection, $query);
-
-            echo "
-            <h1>User List :</h1>
-            <table>
-            <tr>
-                <th>ID</th>
-                <th>last name</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>";
             while ($row = mysqli_fetch_assoc($results)) {
                 echo '<tr>';
                 echo '<td>' . $row['id'] .'</td>';
@@ -66,6 +59,9 @@ if (isset($_SESSION["status"])) {
                 if ($row['status_person'] != 0) {
                     echo '<td><a href=editProfileAdmin.php?id=' . $row['id'] .'>Edit</a></td>';
                     echo '<td><a href=deleteProfileAdmin.php?id=' . $row['id'] .'>Delete</a></td>';
+                } else {
+                    echo '<td>Unavailible</td>';
+                    echo '<td>Unavailible</td>';
                 }
                 echo '</th>';
             }
@@ -81,13 +77,6 @@ if (isset($_SESSION["status"])) {
                 $query = "SELECT * FROM people where `status_person` >= '$currentStatus'";
             }
             $results = mysqli_query($connection, $query);
-            echo "
-            <h1>User List :</h1>
-            <table>
-            <tr>
-                <th>ID</th>
-                <th>last name</th>
-            </tr>";
             while ($row = mysqli_fetch_assoc($results)) {
                 echo '<tr>';
                 echo '<td>' . $row['id'] .'</td>';
@@ -95,22 +84,18 @@ if (isset($_SESSION["status"])) {
                 echo '</th>';
             }
         }
-        
-        
     } else {
         // Simple user
         echo 'Not high enough to see other users';
-    }
-    
-    
+    }    
     echo '</table>';
 } else {
     echo 'not logged in';
 }
-
-
-
-
-
 ?>
+    </tbody>
+  </table>
+</body>
 
+
+</html>
