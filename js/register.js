@@ -106,7 +106,7 @@ function submitRegisterForm(){
     }
 }
 
-const letter_re = new RegExp('^([a-z]|-|é|è){1,20}$');
+const letter_re = new RegExp('^([a-zA-Z]|-|é|è){1,20}$');
 const nb_re = new RegExp('^\\d{1,12}$');
 const mail_re = new RegExp('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$');
 const phone_re = new RegExp('^(\\d{3} ){2}\\d{4}$' );
@@ -229,7 +229,6 @@ function setWarning(elmnt, popup, color){
 }
 
 function reset_warning(elmnt, popup, color){
-    console.log(color);
     if(color === undefined){
         color = 'transparent';
     }

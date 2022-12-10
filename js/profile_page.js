@@ -1,11 +1,10 @@
 let edit_data = false;
 
-const address_re = new RegExp('^([a-zA-Z]|\\d|\\s){3,}$');
-
-
 function editPersonalData(){
     let edit = document.getElementById("edit_btn");
-    let address = document.getElementById("current_address");
+    let address_nb = document.getElementById("current_address_nb");
+    let address_street = document.getElementById("current_address_street");
+    let address_city = document.getElementById("current_address_city");
     let mail = document.getElementById("mail_data");
     let phone = document.getElementById("phone_data");
 
@@ -13,7 +12,10 @@ function editPersonalData(){
         edit_data = true;
         edit.innerHTML = "&#9989;";
 
-        editCSSChanges(address);
+        editCSSChanges(address_nb);
+        editCSSChanges(address_street);
+        editCSSChanges(address_city);
+
         editCSSChanges(mail);
         editCSSChanges(phone);
 
@@ -22,7 +24,9 @@ function editPersonalData(){
         edit_data = false;
         edit.innerHTML = "&#9999;&#65039;";
 
-        editCSSChanges(address, true);
+        editCSSChanges(address_nb, true);
+        editCSSChanges(address_street, true);
+        editCSSChanges(address_city, true);
         editCSSChanges(mail, true);
         editCSSChanges(phone, true);
 
@@ -32,7 +36,10 @@ function editPersonalData(){
 
 function checkDataChange(){
 
-    let address = document.getElementById("current_address");
+    let address_nb = document.getElementById("current_address_nb");
+    let address_street = document.getElementById("current_address_street");
+    let address_city = document.getElementById("current_address_city");
+
     let mail = document.getElementById("mail_data");
     let phone = document.getElementById("phone_data");
 
@@ -48,11 +55,20 @@ function checkDataChange(){
         input_correct = false;
     }
 
-    if (!address_re.test(address.innerHTML)){
-        setWarning(address, "popup_address", "rgb(0, 255, 46)");
+    if (!nb_re.test(address_nb.innerHTML)){
+        setWarning(address_nb, "popup_address", "rgb(0, 255, 46)");
         input_correct = false;
     }
 
+    if (!letter_re.test(address_street.innerHTML)){
+        setWarning(address_street, "popup_address", "rgb(0, 255, 46)");
+        input_correct = false;
+    }
+
+    if (!letter_re.test(address_city.innerHTML)){
+        setWarning(address_city, "popup_address", "rgb(0, 255, 46)");
+        input_correct = false;
+    }
 
     return input_correct;
 }
@@ -81,7 +97,9 @@ function loadProfilePage(dictionary, dic_address,violation_score){
     let lname = dictionary["last_name"];
     let birthday = dictionary["birthday"];
     let birth_place = dictionary["place_of_birth"];
-    let address = dic_address["street_number"]+" "+ dic_address["street"]+" "+ dic_address["city"];
+    let address_nb = dic_address["street_number"];
+    let address_street = dic_address["street"];
+    let address_city = dic_address["city"];
     let mail = dictionary["email"];
     let phone = dictionary["phone"];
 
@@ -104,7 +122,7 @@ function loadProfilePage(dictionary, dic_address,violation_score){
 
     }
 
-    loadProfileData(lname, fname, birthday, birth_place, address, mail, phone);
+    loadProfileData(lname, fname, birthday, birth_place, address_nb, address_street, address_city, mail, phone);
 
     updateDetailScore(nb_studies, social_class, salary, violation_score, marital_status, children,
         party_opinion, donation, social_status);
@@ -141,13 +159,18 @@ function setUpImg(path){
     return img;
 }
 
-function loadProfileData(lname, fname, bday, birth_place, address, mail, phone ){
+function loadProfileData(lname, fname, bday, birth_place, address_nb, address_street, address_city, mail, phone ){
     document.getElementById("last_name").innerText = lname;
     document.getElementById("first_name").innerText = fname;
     document.getElementById("bday").innerText = bday;
     document.getElementById("birth_place").innerText = birth_place;
 
-    document.getElementById("current_address").innerText = address;
+    document.getElementById("current_address_nb").innerText = address_nb;
+    document.getElementById("current_address_nb").style.marginRight = "1em";
+    document.getElementById("current_address_street").innerText = address_street;
+    document.getElementById("current_address_street").style.marginRight = "1em";
+    document.getElementById("current_address_city").innerText = address_city;
+
     document.getElementById("mail_data").innerText = mail;
     document.getElementById("phone_data").innerText = phone;
 
