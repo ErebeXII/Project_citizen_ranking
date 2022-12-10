@@ -103,7 +103,7 @@ function loadProfilePage(dictionary, dic_address,violation_score){
     let mail = dictionary["email"];
     let phone = dictionary["phone"];
 
-    let score = dictionary["total_point"];
+    // let score = dictionary["total_point"];
     let gender = dictionary["gender"];
 
     let nb_studies = dictionary["years_of_study"];

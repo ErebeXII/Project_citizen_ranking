@@ -67,13 +67,14 @@ let cities = [
 ]
 
 function load_dlCities(){
-    var list = document.getElementById('dlCities');
+    let list = document.getElementById('dlCities');
 
     cities.forEach(function(item){
-        var option = document.createElement('option');
+        let option = document.createElement('option');
         option.value = item;
         list.appendChild(option);
     });
+
 }
 
 function check_input_rgst(){
