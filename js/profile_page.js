@@ -293,7 +293,7 @@ function updateDetailScore(nb_studies,social_class, salary, violation, marital_s
     progressBarAdjustment("progress_public_spirit", good_spirit);
     progressBarAdjustment("progress_party_fidelity", party_fidelity);
 
-    if (social_status === 0){
+    if (social_status === 0 || social_status === 1){
         let btn_to_userList = document.createElement("div");
         btn_to_userList.classList.add("orange_yellow_btn");
         btn_to_userList.innerHTML = "Go To User List";
