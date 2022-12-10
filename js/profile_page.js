@@ -12,7 +12,7 @@ function editPersonalData(){
 
     if (!edit_data){
         edit_data = true;
-        edit.innerHTML = "&#9989;";
+        edit.firstElementChild.innerHTML = "&#9989;";
 
         editCSSChanges(address_nb);
         editCSSChanges(address_street);
@@ -24,7 +24,7 @@ function editPersonalData(){
     }
     else if (checkDataChange()){
         edit_data = false;
-        edit.innerHTML = "&#9999;&#65039;";
+        edit.firstElementChild.innerHTML = "&#9999;&#65039;";
 
         editCSSChanges(address_nb, true);
         editCSSChanges(address_street, true);

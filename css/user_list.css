@@ -42,10 +42,11 @@ body{
 }
 
 #search_form div{
-    width: 30%;
+    width: 25%;
 }
 
 .orange_yellow_btn{
+    text-align: center;
     padding: 1em 2em 1em 2em;
     border-radius: 0.5em;
     font-size: 12pt;
@@ -92,4 +93,23 @@ td:nth-child(3) a, th:nth-child(even) a {
 
 td:nth-child(4) a, th:nth-child(4) a {
     color: #c01a1a;
+}
+
+@media (max-width: 900px) {
+
+    #search_form{
+        flex-wrap: wrap;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+    }
+
+    #search_form div{
+        width: 90%;
+    }
+
+   .orange_yellow_btn{
+        width: 60%;
+       margin-bottom: 1vh;
+    }
 }
