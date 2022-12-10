@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
         if ($_SESSION['status'] == 2) {
             header("Location: profile_page.php");
         } else {
-            header("Location: userList.php");
+            header("Location: admin_choice.php");
         }
     } else {
         echo '<script>alert("Invalid Credentials")</script>';
