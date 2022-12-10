@@ -2,6 +2,7 @@ let edit_data = false;
 
 const address_re = new RegExp('^([a-zA-Z]|\\d|\\s){3,}$');
 
+let uid = 0;
 
 function editPersonalData(){
     let edit = document.getElementById("edit_btn");
@@ -25,6 +26,8 @@ function editPersonalData(){
         editCSSChanges(address, true);
         editCSSChanges(mail, true);
         editCSSChanges(phone, true);
+
+        uploadDataChanges(mail, phone);
 
     }
 
@@ -103,6 +106,8 @@ function loadProfilePage(dictionary, dic_address,violation_score){
         updatePP(gender);
 
     }
+
+    uid = dictionary['id']; // used to update the DB
 
     loadProfileData(lname, fname, birthday, birth_place, address, mail, phone);
 
@@ -334,4 +339,43 @@ function progressBarAdjustment(parent_bar, score){
     progress.style.width = percentage + "%";
     progress.innerHTML = initial_score;
     bar_detail.innerText += "score : "+ initial_score;
+}
+
+function uploadDataChanges(mail, phoneNB){
+    mailToSend = mail.innerText
+    phoneToSend = phoneNB.innerText
+    console.log(mailToSend);
+    console.log(phoneToSend);
+    console.log(uid);
+    console.log("v2");
+    $.ajax({
+        type : "POST",  //type of method
+            url  : "profile_page_update.php",  //the page
+            data : { 'email' : mailToSend, 'phone' : phoneToSend, 'id' : uid}, // passing the values
+            success: function(res){
+                console.log(`Success ${res}`);
+            },
+            error: function (error) {
+                console.log(`Error ${error}`)
+    }
+
+})}
+
+function JENAIMARRE (mail, phoneNB) {
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "profile_page_update.php");
+ 
+    // Create an input element for Full Name
+    var elMail = document.createElement("input");
+    elMail.setAttribute("type", "text");
+    elMail.setAttribute("name", "email");
+    elMail.setAttribute("value", mail.innerText);
+
+    var elPhone = document.createElement("input");
+    elPhone.setAttribute("type", "text");
+    elPhone.setAttribute("name", "phone");
+    elPhone.setAttribute("value", phoneNB.innerText);
+
+    form.submit();
 }

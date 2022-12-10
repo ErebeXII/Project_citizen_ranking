@@ -17,7 +17,7 @@ if (!(isset($_SESSION['uid']))) {
     $result = mysqli_query($connection, $query);
     $row = mysqli_fetch_assoc($result);
     $addressId = $row['current_address_id'];
-    $queryAddress = "SELECT * FROM `address` WHERE `id` = '$addressId'";
+    $queryAddress = "SELECT * FROM `address` WHERE `id_address` = '$addressId'";
     $resultAddress = mysqli_query($connection, $queryAddress);
     $rowAddress = mysqli_fetch_assoc($resultAddress);
 
@@ -38,6 +38,7 @@ if (!(isset($_SESSION['uid']))) {
 
 ?>
 
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -49,53 +50,56 @@ if (!(isset($_SESSION['uid']))) {
     <link href="../css/profile_page.css" rel="stylesheet">
     <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/v2.034/512px/1f396.png">
     <script src="../js/profile_page.js"></script>
+    <script src="../js/register.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <title>Your Page</title>
 </head>
-
-<?php
-    $jsonToPass1 = json_encode($row);
-    $jsonToPass2 = json_encode($rowAddress);
-    echo "<script>loadProfilePage('$jsonToPass1', '$jsonToPass2', '$totalViolations');</script>"; ?>
-
 <body>
+
 <div id="wrapper1">
     <div id="pp">
-
+        <img src="" alt="profile_picture" id="pp_img">
     </div>
 
     <div id="personal_data" class="scrollable_div">
 
         <div >
             <h3>Last Name</h3>
-            <p><?php echo $row['last_name']?></p>
+            <p id="last_name"></p>
         </div>
-        <div>
+        <div >
             <h3>First Name</h3>
-            <p><?php echo $row['first_name']?></p>
-        </div>
+            <p id="first_name"></p>
+        </div >
 
-        <div>
+        <div >
             <h3>Date Of Birth</h3>
-            <p><?php echo $row['birthday']?></p>
+            <p id="bday"></p>
         </div>
-        <div>
+        <div >
             <h3>Place Of Birth</h3>
-            <p><?php echo $row['place_of_birth']?></p>
+            <p id="birth_place"></p>
         </div>
 
 
-        <div>
+        <div class="popup hidden">
             <h3>Current Address</h3>
-            <span id="current_address"><?php echo $rowAddress['street_number'] . " " . $rowAddress['street'] . " " . $rowAddress['city']?></span>
+            <span id="current_address"></span>
+            <span class="popuptext" id="popup_address">Please enter a valid address.
+                </span>
         </div>
-        <div>
+        <div class="popup hidden">
             <h3>E-Mail</h3>
-            <span id="mail_data"><?php echo $row['email']?></span>
+            <span id="mail_data"></span>
+            <span class="popuptext" id="popup_mail">Please enter a valid e-mail address.
+                </span>
         </div>
 
-        <div>
+        <div class="popup hidden">
             <h3>Phone Number</h3>
-            <span id="phone_data"><?php echo $row['phone']?></span>
+            <span id="phone_data"></span>
+            <span class="popuptext" id="popup_phone">Please enter a valid phone number with the following format : 000 000 0000
+                </span>
         </div>
 
 
@@ -110,9 +114,55 @@ if (!(isset($_SESSION['uid']))) {
 
 <div id="wrapper2">
     <div id="score_detail">
+        <h2 id="score_detail_title">Get Your Citizen Score Detail Here And Try To Improve It 👍</h2>
 
+        <div>
+            <label for="progress_societal_status">Societal Status :</label>
+            <div  id="progress_societal_status" class="progress">
+                <div class="progress_done_minus">
+
+                </div>
+                <div class="progress_done_plus">
+
+                </div>
+            </div>
+            <p id="progress_societal_status_detail"></p>
+        </div>
+
+        <div>
+            <label for="progress_public_spirit">Public Spirit :</label>
+            <div id="progress_public_spirit" class="progress">
+                <div class="progress_done_minus">
+
+                </div>
+                <div class="progress_done_plus">
+
+                </div>
+            </div>
+            <p id="progress_public_spirit_detail"></p>
+        </div>
+
+        <div>
+            <label for="progress_party_fidelity">Party Fidelity :</label>
+            <div id="progress_party_fidelity" class="progress">
+                <div class="progress_done_minus">
+
+                </div>
+                <div class="progress_done_plus">
+
+                </div>
+            </div>
+            <p id="progress_party_fidelity_detail"></p>
+        </div>
     </div>
 </div>
 
 </body>
+
+<?php
+    $jsonToPass1 = json_encode($row);
+    $jsonToPass2 = json_encode($rowAddress);
+    echo "<script>loadProfilePage('$jsonToPass1', '$jsonToPass2', '$totalViolations');</script>"; ?>
+
+</html>
 </html>
