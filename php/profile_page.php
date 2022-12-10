@@ -37,7 +37,7 @@ if (!(isset($_SESSION['uid']))) {
 }
 
 ?>
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <!doctype html>
 <html lang="en">
@@ -51,7 +51,6 @@ if (!(isset($_SESSION['uid']))) {
     <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/v2.034/512px/1f396.png">
     <script src="../js/profile_page.js"></script>
     <script src="../js/register.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <title>Your Page</title>
 </head>
 <body>
@@ -84,7 +83,10 @@ if (!(isset($_SESSION['uid']))) {
 
         <div class="popup hidden">
             <h3>Current Address</h3>
-            <span id="current_address"></span>
+                <span id="current_address_nb"></span>
+                <span id="current_address_street"></span>
+                <span id="current_address_city"></span>
+
             <span class="popuptext" id="popup_address">Please enter a valid address.
                 </span>
         </div>
@@ -158,11 +160,10 @@ if (!(isset($_SESSION['uid']))) {
 </div>
 
 </body>
-
 <?php
     $jsonToPass1 = json_encode($row);
     $jsonToPass2 = json_encode($rowAddress);
     echo "<script>loadProfilePage('$jsonToPass1', '$jsonToPass2', '$totalViolations');</script>"; ?>
 
 </html>
-</html>
+
