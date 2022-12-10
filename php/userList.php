@@ -57,7 +57,7 @@ if (isset($_SESSION["status"])) {
                 echo '<td>' . $row['id'] .'</td>';
                 echo '<td>' . $row['last_name'] .'</td>';
                 if ($row['status_person'] != 0) {
-                    echo '<td><a href=editProfileAdmin.php?id=' . $row['id'] .'>Edit</a></td>';
+                    echo '<td><a href=edit_page.php?id=' . $row['id'] .'>Edit</a></td>';
                     echo '<td><a href=deleteProfileAdmin.php?id=' . $row['id'] .'>Delete</a></td>';
                 } else {
                     echo '<td>Unavailible</td>';

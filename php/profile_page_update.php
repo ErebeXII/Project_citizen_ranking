@@ -3,6 +3,7 @@
 include 'DBConnection.php';
 session_start();
 
+
 if (isset($_POST['address_nb'])) {
 
     // We're looking for the address
@@ -20,8 +21,8 @@ if (isset($_POST['address_nb'])) {
             echo '<script> console.log("WARNING : Redundancy in the DB");</script>';
         }
         // We have the address
-        $row = mysqli_fetch_assoc($addressResult);
-        $idAddress = $row['id_address'];
+        $rowAddress = mysqli_fetch_assoc($addressResult);
+        $idAddress = $rowAddress['id_address'];
     } else {
         $queryNBAddress = "SELECT * FROM `address`";
         $addressNBResult = mysqli_query($connection, $queryNBAddress);
