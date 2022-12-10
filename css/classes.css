@@ -8,7 +8,7 @@
     background-color: transparent;
     border: 0;
     border-bottom: black solid 0.1em;
-    transition: ease-in-out, width .35s ease-in-out, color 1s;
+    transition: ease-in-out, width .35s ease-in-out, 1s ease;
     font-family: "Courier New", serif;
 }
 

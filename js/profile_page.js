@@ -293,6 +293,17 @@ function updateDetailScore(nb_studies,social_class, salary, violation, marital_s
     progressBarAdjustment("progress_public_spirit", good_spirit);
     progressBarAdjustment("progress_party_fidelity", party_fidelity);
 
+    if (social_status === 0){
+        let btn_to_userList = document.createElement("div");
+        btn_to_userList.classList.add("orange_yellow_btn");
+        btn_to_userList.innerHTML = "Go To User List";
+        btn_to_userList.style.padding = "1em 2em 1em 2em";
+        btn_to_userList.style.borderRadius = "0.5em";
+        btn_to_userList.style.marginTop = "2vh";
+
+        document.body.append(btn_to_userList);
+    }
+
 }
 
 
