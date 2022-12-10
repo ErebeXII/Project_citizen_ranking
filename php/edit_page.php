@@ -2,6 +2,15 @@
 include 'DBConnection.php';
 session_start();
 
+$uid = $_GET['id'];
+$queryPerson = "SELECT * FROM people WHERE `id` = '$uid'";
+$resultPerson = mysqli_query($connection, $queryPerson);
+$rowPerson = mysqli_fetch_assoc($resultPerson);
+$currentAddressId = $rowPerson['current_address_id'];
+$queryCurrentAddress = "SELECT * FROM `address` WHERE `id_address` = '$currentAddressId'";
+$resultCurrentAddress = mysqli_query($connection, $queryCurrentAddress);
+$rowCurrentAddress = mysqli_fetch_assoc($resultCurrentAddress);
+
 if (!(isset($_SESSION['uid']))) {
     header("Location: login.php");
 }
@@ -14,15 +23,6 @@ if (!isset($_GET["id"])) {
     
     header("Location: userList.php");
 }
-
-$uid = $_GET['id'];
-$queryPerson = "SELECT * FROM people WHERE `id` = '$uid'";
-$resultPerson = mysqli_query($connection, $queryPerson);
-$rowPerson = mysqli_fetch_assoc($resultPerson);
-$currentAddressId = $rowPerson['current_address_id'];
-$queryCurrentAddress = "SELECT * FROM `address` WHERE `id_address` = '$currentAddressId'";
-$resultCurrentAddress = mysqli_query($connection, $queryCurrentAddress);
-$rowCurrentAddress = mysqli_fetch_assoc($resultCurrentAddress);
 
 if (isset($_POST['txtPwd'])) {
     $txtPwd = $_POST['txtPwd'];
@@ -71,16 +71,19 @@ if (isset($_POST['txtPwd'])) {
     $NBPeopleResult = mysqli_query($connection, $queryNBPeople);
     $IdPeople = mysqli_num_rows($NBPeopleResult) + 1;
 
-
-    $query = "INSERT INTO `people`(`id`, `pwd`, `last_name`, `first_name`, `birthday`, `place_of_birth`, `current_address_id`, `previous_address_id`, `email`, `phone`, `status_person`) VALUES ('$IdPeople','$cryptedPwd','$txtLName','$txtFName','$txtBDay','$txtPOB','$idAddress',0,'$txtEmail','$txtPhone',2)";  
-
+    $query = "UPDATE `people` SET `pwd`='$cryptedPwd',`last_name`='$txtLName',`first_name`='$txtFName',`birthday`='$txtBDay',`place_of_birth`='$txtPOB',`current_address_id`='$idAddress',`previous_address_id`='$currentAddressId',`email`='$txtEmail',`phone`='$txtPhone' WHERE `id` = '$uid'";
+    
     if (mysqli_query($connection, $query)) {
         echo '<script> console.log("Person added successfully");</script>';
-        header("Location: login.php");
+        header("Location: edit_page.php?id=$uid");
     } else {
         echo '<script> console.log("Error in person creation");</script>';
     }
 }
+
+
+
+
 ?>
 
 <!doctype html>
@@ -184,7 +187,7 @@ if (isset($_POST['txtPwd'])) {
 
   </form>
 
-  <input type="button" form="edit_form" value="Edit User" id="register_btn" class="orange_yellow_btn" onclick="submitEditForm()">
+  <input type="button" form="edit_form" value="Edit User" id="edit_btn" class="orange_yellow_btn" onclick="submitEditForm()">
 </div>
 
 <?php
