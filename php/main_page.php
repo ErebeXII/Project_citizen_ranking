@@ -1,13 +1,3 @@
-<?php
-
-session_start();
-include 'DBConnection.php';
-
-$query = "SELECT * FROM `people` ORDER BY `total_points` DESC";
-$results = mysqli_query($connection, $query);
-
-?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,16 +8,53 @@ $results = mysqli_query($connection, $query);
     <link href="../css/classes.css" rel="stylesheet">
     <link href="../css/main_page.css" rel="stylesheet">
     <script src="../js/main_page.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/v2.034/512px/1f396.png">
     <title>Citizen Ranking</title>
 </head>
+
+<?php
+
+session_start();
+include 'DBConnection.php';
+
+$query = "SELECT * FROM `people` ORDER BY `total_points` DESC";
+$results = mysqli_query($connection, $query);
+
+if (isset($_POST['txtLName'])) {
+    $LName = $_POST['txtLName'];
+    if (isset($_POST['txtFName'])) {
+        echo "<script>console.log('Both set');</script>";
+        $FName = $_POST['txtFName'];
+        $peopleQuery = "SELECT * FROM `people` WHERE `last_name` = '$LName' AND `first_name` = '$FName'";
+    } else {
+        echo "<script>console.log('Lname set');</script>";
+        $peopleQuery = "SELECT * FROM `people` WHERE `last_name` = '$LName'";
+    }
+
+    $resultsPeople = mysqli_query($connection, $peopleQuery);
+    while ($rowPeople = mysqli_fetch_assoc($resultsPeople)) {
+        
+        $scoreToSend = $rowPeople['total_points'];
+        $FNameToSend = $rowPeople['first_name'];
+        $LNameToSend = $rowPeople['last_name'];
+        
+        echo "<script>searchCitizen('$scoreToSend', '$FNameToSend', '$LNameToSend');</script>";
+    }
+} else {
+    echo "<script>console.log('nothing set');</script>";
+}
+
+
+
+
+?>
+
 <body>
 
 <header>
-    <div id="go_register_btn" class="orange_yellow_btn" onclick="location.href='register.php'">Register</div>
+    <div id="go_register_btn" class="orange_yellow_btn" onclick="location.href='register.html'">Register</div>
     <div id="header_title"><h1>Welcome Citizen !</h1></div>
-    <div id="go_login_btn" class="orange_yellow_btn" onclick="location.href='login.php'">LogIn</div>
+    <div id="go_login_btn" class="orange_yellow_btn" onclick="location.href='login.html'">LogIn</div>
 
 </header>
 
@@ -38,9 +65,20 @@ $results = mysqli_query($connection, $query);
             &#128512
         </h1>
     </div>
+
+    <div id="user_results">
+        <p id="result_data">
+            data
+        </p>
+    </div>
+
     <form id="form_search_citizen" method="post" action="">
-        <input class="input" role="textbox" id="input_citizen" name="input_citizen" data-placeholder="Tell us who you are" contenteditable>
-        <input id="search_button" type="submit" class="myButtons orange_yellow_btn" value="Search">
+        <div id="input_citizen">
+            <input type="text" id="first_name_input" class="text-input"  placeholder="First Name" name="txtFName">
+            <p style="font-size: 20pt">|</p>
+            <input type="text" id="last_name_input" class="text-input"  placeholder="Last Name" name="txtLName">
+        </div>
+        <input id="search_button" type="" class="myButtons orange_yellow_btn" value="Search">
         <input id="ranking_button" type="button" class="myButtons dark_orange_pink_btn" onclick="rankingTable()" value="Rankings">
     </form>
 
@@ -48,6 +86,7 @@ $results = mysqli_query($connection, $query);
 
 <div id="hidden_wrapper1" class="fixTableHead scrollable_div">
     <table id="ranking_table" >
+
         <thead>
             <tr>
                 <th>Rank</th>
@@ -68,15 +107,14 @@ $results = mysqli_query($connection, $query);
             ?>
         </tbody>
 
-    </table>
+</table>
 </div>
 
 <div id="wrapper2">
-    <div id="party_adds">
-        
-    </div>
+<div id="party_adds">
+    adds
 </div>
-
+</div>
 
 </body>
 </html>
