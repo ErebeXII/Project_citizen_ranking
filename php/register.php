@@ -49,7 +49,7 @@ if (isset($_POST['txtPwd'])) {
     $queryNBPeople = "SELECT * FROM people";
     $NBPeopleResult = mysqli_query($connection, $queryNBPeople);
     $rowNBPeople = mysqli_fetch_assoc($NBPeopleResult);
-    $IdPeople = $rowNBPeople['id_address'] + 1;
+    $IdPeople = $rowNBPeople['id'] + 1;
 
 
     $query = "INSERT INTO `people`(`id`, `pwd`, `last_name`, `first_name`, `birthday`, `place_of_birth`, `current_address_id`, `previous_address_id`, `email`, `phone`, `status_person`) VALUES ('$IdPeople','$cryptedPwd','$txtLName','$txtFName','$txtBDay','$txtPOB','$idAddress',0,'$txtEmail','$txtPhone',2)";  
@@ -85,7 +85,7 @@ if (isset($_POST['txtPwd'])) {
 
         <div style="width: 100%">
             <h1>Welcome new citizen!</h1>
-            <div onclick="location.href='main_page.html'" class="orange_yellow_btn return_main">↩</div>
+            <div onclick="location.href='main_page.php'" class="orange_yellow_btn return_main">↩</div>
         </div>
 
 

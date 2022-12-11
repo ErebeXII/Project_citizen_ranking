@@ -3,7 +3,16 @@ session_start();
 
 include 'DBConnection.php';
 
-if (isset($_POST['submit'])) {
+require '../includes/PHPMailer.php';
+require '../includes/SMTP.php';
+require '../includes/Exception.php';
+//Define name spaces
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+if (isset($_POST['txtEmail'])) {
+    echo '<script> console.log("ah ?");</script>';
     $email = $_POST['txtEmail'];
     $password = md5($_POST['txtPassword']);
     $query = "SELECT * FROM people WHERE email = '$email' AND pwd = '$password'";
@@ -30,6 +39,67 @@ if (isset($_POST['submit'])) {
         echo '<script>alert("Invalid Credentials")</script>';
     }
 }
+
+function sendEmail($pwd)
+{
+
+    
+
+    //Create instance of PHPMailer
+    $mail = new PHPMailer();
+    //Set mailer to use smtp
+    $mail->isSMTP();
+    //Define smtp host
+    $mail->Host = "smtp.gmail.com";
+    //Enable smtp authentication
+    $mail->SMTPAuth = true;
+    //Set smtp encryption type (ssl/tls)
+    $mail->SMTPSecure = "tls";
+    //Port to connect smtp
+    $mail->Port = "587";
+    //Set gmail username
+    $mail->Username = "romeo.gennari@gmail.com";
+    //Set gmail password
+    $mail->Password = "libzzjtvuspvknpc";
+    //Email subject
+    $mail->Subject = "Reset Password!";
+    //Set sender email
+    $mail->setFrom('romeo.gennari@gmail.com');
+    //Enable HTML
+    $mail->isHTML(true);
+    //Attachment
+    // $mail->addAttachment('img/attachment.png');
+    //Email body
+    $mail->Body = "here is your temporary password: $pwd";
+    //Add recipient
+    $sendTo = $_POST['txtEmailForgotPwd'];
+    $mail->addAddress($sendTo);
+    //$mail->addAddress('daniel.mago@apu.edu.my');
+    //Finally send email
+    if ($mail->send()) {
+        echo '<script> console.log("Message sent.");</script>';
+    } else {
+        echo '<script> console.log("Message could not be sent.");</script>';
+    }
+    //Closing smtp connection
+    $mail->smtpClose();
+}
+
+if (isset($_POST['txtEmailForgotPwd'])) {
+    $mail = $_POST['txtEmailForgotPwd'];
+    $pwd = bin2hex(openssl_random_pseudo_bytes(8); // taken from https://stackoverflow.com/questions/6101956/generating-a-random-password-in-php
+    $cryptedPwd = md5($pwd);
+
+    $query = "UPDATE `people` SET `pwd`='$cryptedPwd' WHERE `email` = '$mail'";
+
+    if (mysqli_query($connection, $query)) {
+        sendEmail($pwd);
+        echo '<script> console.log("modification successful");</script>';
+    } else {
+        echo '<script> console.log("Error in modification");</script>';
+    }
+}
+
 ?>
 
 <!doctype html>
@@ -41,7 +111,9 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="../css/classes.css" rel="stylesheet">
     <link href="../css/login.css" rel="stylesheet">
+    <script src="../js/register.js"></script>
     <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/v2.034/512px/1f396.png">
+    <script src="../js/login.js"></script>
     <title>Login</title>
 </head>
 
@@ -52,23 +124,35 @@ if (isset($_POST['submit'])) {
     </div>
 
   <div id="wrapper1">
-      <div onclick="location.href='main_page.html'" class="orange_yellow_btn return_main">↩</div>
+      <div onclick="location.href='main_page.php'" class="orange_yellow_btn return_main">↩</div>
       <h1>Hello Citizen !</h1>
       <form id="login_form" action="" method="post">
           <div>
-              <label for="username">Email</label><br />
+              <label for="username">Username</label><br />
               <input type="text" id="username" class="text-input" name="txtEmail" placeholder="👤   Enter your email"><br /><br>
           </div>
           <div>
               <label for="password">Password</label><br />
               <input type="password" id="password" class="text-input" name="txtPassword" placeholder="🔒   Enter your password"><br />
-              <a href="">Forgot Password</a>
+              <p onclick="displayForgotPwd()">Forgot Password</p>
           </div>
 
           <br>
 
-          <input type="submit" value="Login" id="login_btn" class="orange_yellow_btn" name="submit">
+          <input type="submit" value="Login" id="login_btn" class="orange_yellow_btn" >
       </form>
+
+      <form id="forgot_pwd_form" action="" method="post">
+          <div class="popup hidden">
+              <label for="mail_forgot_pwd">Your Account Mail</label>
+              <input type="text" id="mail_forgot_pwd" class="text-input" name="txtEmailForgotPwd"
+                     placeholder="Please enter your e-mail">
+              <span class="popuptext" id="popup_mail_forgot_pwd">Please enter a valid e-mail
+                </span>
+          </div>
+          <input type="button" value="Send" id="mail_forgot_pwd_btn" class="orange_yellow_btn" onclick="checkInputEmail()">
+      </form>
+
   </div>
 
     <div class="partyAdds">
