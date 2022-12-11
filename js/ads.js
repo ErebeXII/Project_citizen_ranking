@@ -28,7 +28,6 @@ function setUpImg(list, vertical){
 
 function adsFilm(element_name, index, vertical){
 
-    console.log(index);
     let save_name = element_name;
     let element = document.getElementById(save_name);
     element.innerHTML = "";
