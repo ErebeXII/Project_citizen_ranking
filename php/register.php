@@ -85,7 +85,7 @@ if (isset($_POST['txtPwd'])) {
 
         <div style="width: 100%">
             <h1>Welcome new citizen!</h1>
-            <div onclick="location.href='main_page.html'" class="orange_yellow_btn return_main">↩</div>
+            <div onclick="location.href='main_page.php'" class="orange_yellow_btn return_main">↩</div>
         </div>
 
 

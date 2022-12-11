@@ -24,9 +24,9 @@ $results = mysqli_query($connection, $query);
 <body>
 
 <header>
-    <div id="go_register_btn" class="orange_yellow_btn" onclick="location.href='register.html'">Register</div>
+    <div id="go_register_btn" class="orange_yellow_btn" onclick="location.href='register.php'">Register</div>
     <div id="header_title"><h1>Welcome Citizen !</h1></div>
-    <div id="go_login_btn" class="orange_yellow_btn" onclick="location.href='login.html'">LogIn</div>
+    <div id="go_login_btn" class="orange_yellow_btn" onclick="location.href='login.php'">LogIn</div>
 
 </header>
 

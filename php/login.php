@@ -124,7 +124,7 @@ if (isset($_POST['txtEmailForgotPwd'])) {
     </div>
 
   <div id="wrapper1">
-      <div onclick="location.href='main_page.html'" class="orange_yellow_btn return_main">↩</div>
+      <div onclick="location.href='main_page.php'" class="orange_yellow_btn return_main">↩</div>
       <h1>Hello Citizen !</h1>
       <form id="login_form" action="" method="post">
           <div>
