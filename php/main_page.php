@@ -20,20 +20,17 @@ include 'DBConnection.php';
 $query = "SELECT * FROM `people` ORDER BY `total_points` DESC";
 $results = mysqli_query($connection, $query);
 
-if (isset($_POST['txtLName'])) {
-    $LName = $_POST['txtLName'];
-    if (isset($_POST['txtFName'])) {
-        echo "<script>console.log('Both set');</script>";
-        $FName = $_POST['txtFName'];
-        $peopleQuery = "SELECT * FROM `people` WHERE `last_name` = '$LName' AND `first_name` = '$FName'";
-    } else {
-        echo "<script>console.log('Lname set');</script>";
-        $peopleQuery = "SELECT * FROM `people` WHERE `last_name` = '$LName'";
-    }
-
+if (isset($_POST['txtLName']) && isset($_POST['txtFName'])) {
+    $firstName = $_POST['txtFName'];
+    $lastName = $_POST['txtLName'];
+    $peopleQuery = "SELECT * FROM people WHERE `last_name` = '$lastName' AND `first_name` = '$firstName'";
     $resultsPeople = mysqli_query($connection, $peopleQuery);
-    while ($rowPeople = mysqli_fetch_assoc($resultsPeople)) {
+    echo "<script>console.log('$firstName');</script>";
+    echo "<script>console.log('$lastName');</script>";
+    while ($rowPeople = mysqli_fetch_assoc($resultsPeople)) {   
         
+        echo "<script>console.log('A result has been sent');</script>";
+
         $scoreToSend = $rowPeople['total_points'];
         $FNameToSend = $rowPeople['first_name'];
         $LNameToSend = $rowPeople['last_name'];
@@ -78,7 +75,7 @@ if (isset($_POST['txtLName'])) {
             <p style="font-size: 20pt">|</p>
             <input type="text" id="last_name_input" class="text-input"  placeholder="Last Name" name="txtLName">
         </div>
-        <input id="search_button" type="" class="myButtons orange_yellow_btn" value="Search">
+        <input id="search_button" type="submit" class="myButtons orange_yellow_btn" value="Search">
         <input id="ranking_button" type="button" class="myButtons dark_orange_pink_btn" onclick="rankingTable()" value="Rankings">
     </form>
 
