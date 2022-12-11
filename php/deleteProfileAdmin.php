@@ -49,7 +49,5 @@ if (isset($_POST['confirm'])) {
 
           <input type="submit" value="confirm" class="orange_yellow_btn" name="confirm">
       </form>
-    <h2>User List</h2>
-    
 </body>
 </html>
