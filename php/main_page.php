@@ -1,5 +1,4 @@
 <!doctype html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,9 +7,13 @@
     <link href="../css/classes.css" rel="stylesheet">
     <link href="../css/main_page.css" rel="stylesheet">
     <script src="../js/main_page.js"></script>
+    <script src="../js/ads.js"></script>
+
     <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/v2.034/512px/1f396.png">
     <title>Citizen Ranking</title>
 </head>
+<body>
+
 
 <?php
 
@@ -106,10 +109,12 @@ if (isset($_POST['txtLName']) && isset($_POST['txtFName'])) {
 </div>
 
 <div id="wrapper2">
-<div id="party_adds">
-    adds
+    <div id="party_ads">
+
+    </div>
 </div>
-</div>
+
+<script>adsFilm("party_ads", 0)</script>
 
 </body>
 </html>

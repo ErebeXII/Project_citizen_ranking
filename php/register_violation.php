@@ -27,7 +27,7 @@ if (isset($_POST['txtVName'])) {
     $personResult = mysqli_query($connection, $queryPerson);
     $personRow = mysqli_fetch_assoc($personResult);
 
-    if ($personRow['status_person'] < $_SESSION['status']) {
+    if ($personRow['status_person'] > $_SESSION['status']) {
 
         // We only allow people of higher status to add violations
 
