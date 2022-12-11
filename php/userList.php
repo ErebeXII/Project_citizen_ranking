@@ -62,8 +62,8 @@ if (isset($_SESSION["status"])) {
                     echo '<td><a href=edit_page.php?id=' . $row['id'] .'>Edit</a></td>';
                     echo '<td><a href=deleteProfileAdmin.php?id=' . $row['id'] .'>Delete</a></td>';
                 } else {
-                    echo '<td>Unavailible</td>';
-                    echo '<td>Unavailible</td>';
+                    echo '<td>Unavailable</td>';
+                    echo '<td>Unavailable</td>';
                 }
                 echo '</th>';
             }
