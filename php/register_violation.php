@@ -1,6 +1,15 @@
 <?php
 
 include 'DBConnection.php';
+session_start();
+
+if (!(isset($_SESSION['uid']))) {
+    header("Location: login.php");
+}
+
+if ($_SESSION['status'] == 2) {
+    header("Location: main_page.php");
+}
 
 if (isset($_POST['txtVName'])) {
     $vName = $_POST['txtVName'];
@@ -14,31 +23,42 @@ if (isset($_POST['txtVName'])) {
     $violationsRow = mysqli_fetch_assoc($violationsResult);
     $vID = $violationsRow['id'] + 1;
 
-    echo '<script> console.log('.$vLevel.');</script>';
+    $queryPerson = "SELECT * FROM `people` WHERE `id` = '$vIDPerson'";
+    $personResult = mysqli_query($connection, $queryPerson);
+    $personRow = mysqli_fetch_assoc($personResult);
 
-    switch ($vLevel) {
-        case "1" :
-            $totalPoints = -3;
-            break;
-        case "2" :
-            $totalPoints = -10;
-            break;
-        case "3" :
-            $totalPoints = -20;
-            break;
-        default :
-            echo '<script> console.log("Error in level");</script>';
-            $totalPoints = 0;
-            break;            
-    }
+    if ($personRow['status_person'] < $_SESSION['status']) {
 
-    $query = "INSERT INTO `violation`(`id`, `level_violation`, `name_violation`, `date_violation`, `address_id`, `total_points`, `id_person`) VALUES ('$vID','$vLevel','$vName','$vDate','$vIDAdress','$totalPoints','$vIDPerson')";
-        
-    if (mysqli_query($connection, $query)) {
-        echo '<script> console.log("Person added successfully");</script>';
+        // We only allow people of higher status to add violations
+
+        switch ($vLevel) {
+            case "1" :
+                $totalPoints = -3;
+                break;
+            case "2" :
+                $totalPoints = -10;
+                break;
+            case "3" :
+                $totalPoints = -20;
+                break;
+            default :
+                echo '<script> console.log("Error in level");</script>';
+                $totalPoints = 0;
+                break;            
+        }
+    
+        $query = "INSERT INTO `violation`(`id`, `level_violation`, `name_violation`, `date_violation`, `address_id`, `total_points`, `id_person`) VALUES ('$vID','$vLevel','$vName','$vDate','$vIDAdress','$totalPoints','$vIDPerson')";
+            
+        if (mysqli_query($connection, $query)) {
+            echo '<script> console.log("Person added successfully");</script>';
+        } else {
+            echo '<script> console.log("Error in person creation");</script>';
+        }
     } else {
-        echo '<script> console.log("Error in person creation");</script>';
+        echo '<script> console.log("Status too low");</script>';
     }
+
+    
 }
 ?>
 
@@ -102,7 +122,11 @@ if (isset($_POST['txtVName'])) {
                 </span>
     </div>
 
-    <input type="button" value="Register" id="register_violation_btn" class="orange_yellow_btn" onclick="submitViolationForm()">
+
+    <div id="button_div">
+      <input type="button" value="Go Back" id="back" class="orange_yellow_btn" onclick="window.location.href = 'userList.php'">
+      <input type="button" value="Register" id="register_violation_btn" class="orange_yellow_btn" onclick="submitViolationForm()">
+    </div>
 
   </form>
 
