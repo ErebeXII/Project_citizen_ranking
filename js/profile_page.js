@@ -273,10 +273,10 @@ function updateDetailScore(nb_studies,social_class, salary, violation, marital_s
         case donation<1000:
             party_fidelity += 30;
             break
-        case salary<10000:
+        case donation<10000:
             party_fidelity += 50;
             break
-        case salary >= 10000:
+        case donation >= 10000:
             party_fidelity+= 100;
             break
         default:

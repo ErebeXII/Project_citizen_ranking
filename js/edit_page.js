@@ -61,9 +61,7 @@ function check_input_edit(){
 function submitEditForm(){
     let form = document.getElementById("edit_form");
     let btn = document.getElementById("edit_btn");
-    console.log("1");
     if (check_input_edit()){
-        console.log("2");
         btn.setAttribute('type', 'submit');
         form.submit();
     }

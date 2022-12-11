@@ -1,0 +1,55 @@
+
+*{
+    margin: 0;
+    font-family: "Courier New", serif;
+}
+
+body{
+    background-color: #708090;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#register_violation_form{
+    background-color: white;
+    width: 60vw;
+    height: fit-content;
+
+    padding: 2vh 3vw 2vh 3vw;
+    border-radius: 0.5em;
+}
+
+#register_violation_form *{
+    display: inline-block;
+}
+
+#register_violation_form h1{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+#register_violation_form div{
+    margin: 2% 2% 2% 8%;
+    width: 35%;
+}
+
+#register_violation_form > div:last-of-type{
+    width: 45%;
+}
+
+#register_violation_form label{
+    font-weight: bolder;
+}
+
+
+#register_violation_btn{
+    width: 20%;
+    padding: 1% 2% 1% 2%;
+    margin: 4% 40% 0 40%;
+    border-radius: 0.5em;
+}

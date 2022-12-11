@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="../css/register_violation.css" rel="stylesheet">
+  <link href="../css/classes.css" rel="stylesheet">
+  <script src="../js/register.js"></script>
+  <script src="../js/violation_register.js"></script>
+
+  <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/v2.034/512px/1f396.png">
+  <title>Register Violation</title>
+</head>
+
+<body>
+
+  <form id="register_violation_form" action="">
+    <h1>Register A Violation</h1>
+
+    <div class="popup hidden">
+      <label for="violation_name">Violation Name</label><br>
+      <input type="text" id="violation_name" class="text-input" placeholder="Name of the Violation" name="txtVName">
+      <span class="popuptext" id="popup_Vname">Please enter a valid name.
+                    Special characters others than
+                    'é','è' and '-' are forbidden.
+                </span>
+    </div>
+
+    <div class="popup hidden">
+      <label for="violation_date">Violation Date</label><br>
+      <input type="date" id="violation_date" class="text-input"  min="1915-01-01" max="<?= date('Y-m-d'); ?>" name="txtVDate">
+      <span class="popuptext" id="popup_Vdate">Please enter a valid date.
+                </span>
+    </div>
+
+    <div class="popup hidden">
+      <label for="violation_level">Violation Level</label><br>
+      <input type="text" id="violation_level" class="text-input"  placeholder="Level of the Violation" name="txtVlevel">
+      <span class="popuptext" id="popup_Vlevel">Please enter a valid Violation level
+                </span>
+    </div>
+
+    <div class="popup hidden">
+      <label for="violation_id_address">ID of the address of the Violation</label><br>
+      <input type="text" id="violation_id_address" class="text-input"  placeholder="Id of the address of the Violation"
+             name="txtVIDaddress">
+      <span class="popuptext" id="popup_VIDaddress">Please enter a valid ID address
+                </span>
+    </div>
+
+    <div class="popup hidden">
+      <label for="violation_id_person">ID of the perpetrator(s) of the Violation</label><br>
+      <input type="text" id="violation_id_person" class="text-input"  placeholder="Id of the perpetrator(s) of the Violation"
+             name="txtVIDaddress">
+      <span class="popuptext" id="popup_VIDperson">Please enter a valid ID person
+                </span>
+    </div>
+
+    <input type="button" value="Register" id="register_violation_btn" class="orange_yellow_btn" onclick="submitViolationForm()">
+
+  </form>
+
+</body>
+</html>
