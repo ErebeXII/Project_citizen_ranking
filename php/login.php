@@ -87,7 +87,7 @@ function sendEmail($pwd)
 
 if (isset($_POST['txtEmailForgotPwd'])) {
     $mail = $_POST['txtEmailForgotPwd'];
-    $pwd = bin2hex(openssl_random_pseudo_bytes(8); // taken from https://stackoverflow.com/questions/6101956/generating-a-random-password-in-php
+    $pwd = bin2hex(openssl_random_pseudo_bytes(8)); // taken from https://stackoverflow.com/questions/6101956/generating-a-random-password-in-php
     $cryptedPwd = md5($pwd);
 
     $query = "UPDATE `people` SET `pwd`='$cryptedPwd' WHERE `email` = '$mail'";
@@ -114,12 +114,14 @@ if (isset($_POST['txtEmailForgotPwd'])) {
     <script src="../js/register.js"></script>
     <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/v2.034/512px/1f396.png">
     <script src="../js/login.js"></script>
+    <script src="../js/ads.js"></script>
+
     <title>Login</title>
 </head>
 
 <body>
 
-    <div class="partyAdds">
+    <div class="partyAdds" id="ads_1">
         
     </div>
 
@@ -155,10 +157,13 @@ if (isset($_POST['txtEmailForgotPwd'])) {
 
   </div>
 
-    <div class="partyAdds">
+    <div class="partyAdds" id="ads_2">
 
     </div>
 
 </body>
+    <script>adsFilm("ads_1", 0, true)</script>
+    <script>adsFilm("ads_2", 2, true)</script>
+
 
 </html>
