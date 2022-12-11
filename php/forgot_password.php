@@ -48,9 +48,9 @@ function sendEmail()
     //$mail->addAddress('daniel.mago@apu.edu.my');
     //Finally send email
     if ($mail->send()) {
-        echo "Email Sent..!";
+        echo '<script> console.log("Message sent.");</script>';
     } else {
-        echo "Message could not be sent. Mailer Error: ";
+        echo '<script> console.log("Message could not be sent.");</script>';
     }
     //Closing smtp connection
     $mail->smtpClose();
@@ -70,8 +70,6 @@ if (isset($_POST['email'])) {
     } else {
         echo '<script> console.log("Error in modification");</script>';
     }
-
-    
 }
 
 ?>

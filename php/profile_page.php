@@ -30,8 +30,8 @@ if (!(isset($_SESSION['uid']))) {
     $queryViolations = "SELECT * FROM violation WHERE `id_person` = '$uid'";
     $resultViolations = mysqli_query($connection, $queryViolations);
     $totalViolations = 0;
-    while ($rowViolations = mysqli_fetch_assoc($result)) {
-        $totalViolations += $rowViolations['point'];
+    while ($rowViolations = mysqli_fetch_assoc($resultViolations)) {
+        $totalViolations += $rowViolations['total_points'];
     }
     
 }
@@ -106,7 +106,7 @@ if (!(isset($_SESSION['uid']))) {
 
 
         <div id="data_btns">
-            <div id="logout_bnt" class="orange_yellow_btn">LogOut</div>
+            <div id="logout_bnt" class="orange_yellow_btn" onclick="window.location.href = 'logout.php'">LogOut</div>
             <div id="edit_btn" class="orange_yellow_btn" onclick="editPersonalData()">&#9999;&#65039;</div>
         </div>
 
