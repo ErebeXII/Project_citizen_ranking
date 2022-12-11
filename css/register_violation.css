@@ -53,3 +53,23 @@ body{
     margin: 4% 40% 0 40%;
     border-radius: 0.5em;
 }
+
+@media (max-width: 900px) {
+    #register_violation_form{
+        width: 90vw;
+    }
+
+    #register_violation_form div{
+        margin: 4% 2% 4% 2%;
+        width: 90%;
+    }
+
+    #register_violation_form > div:last-of-type{
+        width: 90%;
+    }
+
+    #register_violation_btn{
+        width: 40%;
+        margin: 4% 30% 4% 30%;
+    }
+}
