@@ -87,7 +87,7 @@ function sendEmail($pwd)
 
 if (isset($_POST['txtEmailForgotPwd'])) {
     $mail = $_POST['txtEmailForgotPwd'];
-    $pwd = "hello"; // TODO : password generator
+    $pwd = bin2hex(openssl_random_pseudo_bytes(8); // taken from https://stackoverflow.com/questions/6101956/generating-a-random-password-in-php
     $cryptedPwd = md5($pwd);
 
     $query = "UPDATE `people` SET `pwd`='$cryptedPwd' WHERE `email` = '$mail'";
