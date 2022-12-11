@@ -1,3 +1,47 @@
+<?php
+
+include 'DBConnection.php';
+
+if (isset($_POST['txtVName'])) {
+    $vName = $_POST['txtVName'];
+    $vDate = $_POST['txtVDate'];
+    $vLevel = $_POST['txtVlevel'];
+    $vIDPerson = $_POST['txtVIDAddress'];
+    $vIDAdress = $_POST['txtVIDPerson'];
+
+    $queryViolations = "SELECT * FROM `violation` ORDER BY `id` DESC";
+    $violationsResult = mysqli_query($connection, $queryViolations);
+    $violationsRow = mysqli_fetch_assoc($violationsResult);
+    $vID = $violationsRow['id'] + 1;
+
+    echo '<script> console.log('.$vLevel.');</script>';
+
+    switch ($vLevel) {
+        case "1" :
+            $totalPoints = -3;
+            break;
+        case "2" :
+            $totalPoints = -10;
+            break;
+        case "3" :
+            $totalPoints = -20;
+            break;
+        default :
+            echo '<script> console.log("Error in level");</script>';
+            $totalPoints = 0;
+            break;            
+    }
+
+    $query = "INSERT INTO `violation`(`id`, `level_violation`, `name_violation`, `date_violation`, `address_id`, `total_points`, `id_person`) VALUES ('$vID','$vLevel','$vName','$vDate','$vIDAdress','$totalPoints','$vIDPerson')";
+        
+    if (mysqli_query($connection, $query)) {
+        echo '<script> console.log("Person added successfully");</script>';
+    } else {
+        echo '<script> console.log("Error in person creation");</script>';
+    }
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
