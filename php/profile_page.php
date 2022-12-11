@@ -30,17 +30,15 @@ if (!(isset($_SESSION['uid']))) {
     $queryViolations = "SELECT * FROM violation WHERE `id_person` = '$uid'";
     $resultViolations = mysqli_query($connection, $queryViolations);
     $totalViolations = 0;
-    while ($rowViolations = mysqli_fetch_assoc($result)) {
-        $totalViolations += $rowViolations['point'];
+    while ($rowViolations = mysqli_fetch_assoc($resultViolations)) {
+        $totalViolations += $rowViolations['total_points'];
     }
     
 }
 
 ?>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <!doctype html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -51,6 +49,7 @@ if (!(isset($_SESSION['uid']))) {
     <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/v2.034/512px/1f396.png">
     <script src="../js/profile_page.js"></script>
     <script src="../js/register.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <title>Your Page</title>
 </head>
 <body>
@@ -107,7 +106,12 @@ if (!(isset($_SESSION['uid']))) {
 
         <div id="data_btns">
             <div id="logout_bnt" class="orange_yellow_btn">LogOut</div>
-            <div id="edit_btn" class="orange_yellow_btn" onclick="editPersonalData()">&#9999;&#65039;</div>
+
+            <div id="edit_btn" class="orange_yellow_btn" onclick="editPersonalData()" style="display: flex; flex-direction: row; align-items: center">
+                <div style="height: 100%"> &#9999;&#65039;</div> <div>Edit Profile</div></div>
+
+            <div id="edit_pwd" class="orange_yellow_btn" onclick="" style="display: flex; flex-direction: row; align-items: center">
+                <div style="height: 100%">&#128273;</div> <div>Edit Password</div></div>
         </div>
 
     </div>
