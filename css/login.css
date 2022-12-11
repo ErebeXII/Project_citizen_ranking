@@ -35,7 +35,7 @@ body{
 
 #login_form{
     width: 100%;
-    height: 50%;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-items: center;
@@ -54,7 +54,7 @@ body{
 }
 
 
-#login_form a:link{
+#login_form p{
     display: flex;
     flex-direction: row-reverse;
     text-align: right;
@@ -62,29 +62,11 @@ body{
     margin: 0.5em 0 0 0;
     color: #888888;
     text-decoration: underline 0.15em rgba(0, 0, 0, 0);
-    transition: color 0.5s, text-decoration-color 0.5s;}
+    transition: color 0.5s, text-decoration-color 0.5s;
+    cursor: pointer;
+}
 
-#login_form a:visited{
-    display: flex;
-    flex-direction: row-reverse;
-    text-align: right;
-    font-size: 10pt;
-    margin: 0.5em 0 0 0;
-    color: #888888;
-    text-decoration: underline 0.15em rgba(0, 0, 0, 0);
-    transition: color 0.5s, text-decoration-color 0.5s;
-}
-#login_form a:active{
-    display: flex;
-    flex-direction: row-reverse;
-    text-align: right;
-    font-size: 10pt;
-    margin: 0.5em 0 0 0;
-    color: #888888;
-    text-decoration: underline 0.15em rgba(0, 0, 0, 0);
-    transition: color 0.5s, text-decoration-color 0.5s;
-}
-#login_form a:hover{
+#login_form p:hover{
     display: flex;
     flex-direction: row-reverse;
     text-align: right;
@@ -113,6 +95,42 @@ body{
     border: 0;
 }
 
+#forgot_pwd_form{
+    width: 80%;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 1% 4% 1% 4%;
+    border-radius: 0.5em;
+    transition: height 1s, opacity 2s, ease 1s;
+}
+
+#forgot_pwd_form label{
+    font-weight: bolder;
+}
+
+#forgot_pwd_form > div:first-of-type{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+
+}
+
+#forgot_pwd_form > input:last-of-type{
+    padding: 2% 4% 2% 4%;
+    border-radius: 0.5em;
+    text-align: center;
+}
+
+
 .partyAdds{
     height: 85vh;
     width: 15vw;
@@ -126,6 +144,10 @@ body{
         flex-direction: column;
     }
 
+    .return_main{
+        display: none;
+    }
+
     #wrapper1{
         width: 90vw;
         margin: 1vh 0 1vh 0;
@@ -134,5 +156,18 @@ body{
     .partyAdds{
         height: 8vh;
         width: 90vw;
+    }
+
+    #login_form div{
+        width: 70%;
+    }
+
+    #forgot_pwd_form{
+        flex-direction: column;
+    }
+
+    #forgot_pwd_form > div:first-of-type{
+        width: 90%;
+        margin: 1%;
     }
 }
