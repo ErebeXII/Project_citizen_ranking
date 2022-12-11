@@ -17,3 +17,18 @@ function displayForgotPwd(){
         display_forgot_pwd = false;
     }
 }
+
+function checkInputEmail(){
+
+    let mail = document.getElementById("mail_forgot_pwd");
+
+    if (!mail_re.test(mail.value)){
+        setWarning(mail, "popup_mail_forgot_pwd");
+    }
+    else {
+        document.getElementById("forgot_pwd_form").submit();
+    }
+
+
+}
+
