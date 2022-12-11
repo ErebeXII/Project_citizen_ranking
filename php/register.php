@@ -49,7 +49,7 @@ if (isset($_POST['txtPwd'])) {
     $queryNBPeople = "SELECT * FROM people";
     $NBPeopleResult = mysqli_query($connection, $queryNBPeople);
     $rowNBPeople = mysqli_fetch_assoc($NBPeopleResult);
-    $IdPeople = $rowNBAddress['id_address'] + 1;
+    $IdPeople = $rowNBPeople['id_address'] + 1;
 
 
     $query = "INSERT INTO `people`(`id`, `pwd`, `last_name`, `first_name`, `birthday`, `place_of_birth`, `current_address_id`, `previous_address_id`, `email`, `phone`, `status_person`) VALUES ('$IdPeople','$cryptedPwd','$txtLName','$txtFName','$txtBDay','$txtPOB','$idAddress',0,'$txtEmail','$txtPhone',2)";  
