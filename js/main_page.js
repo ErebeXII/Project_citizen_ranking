@@ -124,18 +124,38 @@ function loadTableFromPHP(rank, fname, lname, score){
 
 function funnierEmoji(){
     let emoji_title = document.getElementById("emoji_title");
-    let img = document.createElement("img");
+
 
     if (emoji_title.innerText === "😀") {
-        img.src = "../images/mrincredible0.png";
-        emoji_title.innerHTML = "";
-        img.style.borderRadius = "2em";
-        img.style.height = "30vh";
-        img.style.width = "auto";
-        emoji_title.appendChild(img);
-        setTimeout(noMoreFunnyEmoji,5000, "😀");
-
+        setEmoji("../images/mrincredible0.png");
     }
+    else if(emoji_title.innerText === "😐"){
+        setEmoji("../images/mrincredible1.png");
+    }
+    else if(emoji_title.innerText === "😬"){
+        setEmoji("../images/mrincredible2.png");
+    }
+    else if(emoji_title.innerText === "😨"){
+        setEmoji("../images/mrincredible3.png");
+    }
+    else if(emoji_title.innerText === "💀"){
+        setEmoji("../images/mrincredible4.png");
+    }
+
+}
+
+function setEmoji( img_path){
+    let emoji_title = document.getElementById("emoji_title");
+
+    let img = document.createElement("img");
+    let inner_emoji = emoji_title.innerText;
+    img.src = img_path;
+    emoji_title.innerText = "";
+    img.style.borderRadius = "2em";
+    img.style.height = "30vh";
+    img.style.width = "auto";
+    emoji_title.appendChild(img);
+    setTimeout(noMoreFunnyEmoji,5000, inner_emoji);
 }
 
 function noMoreFunnyEmoji(emoji){
@@ -151,7 +171,37 @@ function noMoreFunnyEmoji(emoji){
 
 function searchCitizen(score, fname, lname){
 
-    console.log(score);
+    let data = document.getElementById("result_data");
+    let container = document.getElementById("user_results");
+    let emoji_text;
+
+
+    data.innerHTML = "Hello "+ fname + " " + lname + ", your score is : " + score;
+
+    container.style.height = "5vh";
+    container.style.opacity = "1";
+    container.style.visibility = "visible";
+
+    switch (true){
+        case score < (-50):
+            emoji_text = "💀";
+            break
+        case score < (-20):
+            emoji_text = "😨";
+            break
+        case score < 0:
+            emoji_text = "😬";
+            break
+        case score < 10:
+            emoji_text = "😐";
+            break
+
+        default:
+            emoji_text = "😀";
+            break
+    }
+
+    noMoreFunnyEmoji(emoji_text);
 }
 
 
