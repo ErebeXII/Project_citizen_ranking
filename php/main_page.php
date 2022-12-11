@@ -19,31 +19,6 @@ include 'DBConnection.php';
 
 $query = "SELECT * FROM `people` ORDER BY `total_points` DESC";
 $results = mysqli_query($connection, $query);
-
-if (isset($_POST['txtLName']) && isset($_POST['txtFName'])) {
-    $firstName = $_POST['txtFName'];
-    $lastName = $_POST['txtLName'];
-    $peopleQuery = "SELECT * FROM people WHERE `last_name` = '$lastName' AND `first_name` = '$firstName'";
-    $resultsPeople = mysqli_query($connection, $peopleQuery);
-    echo "<script>console.log('$firstName');</script>";
-    echo "<script>console.log('$lastName');</script>";
-    while ($rowPeople = mysqli_fetch_assoc($resultsPeople)) {   
-        
-        echo "<script>console.log('A result has been sent');</script>";
-
-        $scoreToSend = $rowPeople['total_points'];
-        $FNameToSend = $rowPeople['first_name'];
-        $LNameToSend = $rowPeople['last_name'];
-        
-        echo "<script>searchCitizen('$scoreToSend', '$FNameToSend', '$LNameToSend');</script>";
-    }
-} else {
-    echo "<script>console.log('nothing set');</script>";
-}
-
-
-
-
 ?>
 
 <body>
@@ -105,6 +80,29 @@ if (isset($_POST['txtLName']) && isset($_POST['txtFName'])) {
         </tbody>
 
 </table>
+
+<?php
+if (isset($_POST['txtLName']) && isset($_POST['txtFName'])) {
+    $firstName = $_POST['txtFName'];
+    $lastName = $_POST['txtLName'];
+    $peopleQuery = "SELECT * FROM people WHERE `last_name` = '$lastName' AND `first_name` = '$firstName'";
+    $resultsPeople = mysqli_query($connection, $peopleQuery);
+    echo "<script>console.log('$firstName');</script>";
+    echo "<script>console.log('$lastName');</script>";
+    while ($rowPeople = mysqli_fetch_assoc($resultsPeople)) {   
+        
+        echo "<script>console.log('A result has been sent');</script>";
+
+        $scoreToSend = $rowPeople['total_points'];
+        $FNameToSend = $rowPeople['first_name'];
+        $LNameToSend = $rowPeople['last_name'];
+        
+        echo "<script>searchCitizen('$scoreToSend', '$FNameToSend', '$LNameToSend');</script>";
+    }
+} else {
+    echo "<script>console.log('nothing set');</script>";
+}
+?>
 </div>
 
 <div id="wrapper2">
