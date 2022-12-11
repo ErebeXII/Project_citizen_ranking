@@ -24,9 +24,10 @@ if (isset($_POST['address_nb'])) {
         $rowAddress = mysqli_fetch_assoc($addressResult);
         $idAddress = $rowAddress['id_address'];
     } else {
-        $queryNBAddress = "SELECT * FROM `address`";
+        $queryNBAddress = "SELECT * FROM `address` ORDER BY `id` DESC";
         $addressNBResult = mysqli_query($connection, $queryNBAddress);
-        $idAddress = mysqli_num_rows($addressNBResult) + 1;
+        $rowNBAddress = mysqli_fetch_assoc($addressNBResult);
+        $idAddress = $rowNBAddress['id'] + 1;
         
         $queryNewAddress = "INSERT INTO `address`(`id_address`, `city`, `street`, `street_number`) VALUES ('$idAddress','$address_city','$address_street','$address_nb')";
 

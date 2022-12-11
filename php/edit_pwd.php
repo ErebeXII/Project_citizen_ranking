@@ -9,10 +9,7 @@ if (isset($_SESSION['uid'])) {
     if (isset($_POST['txtPwd'])) {
         $newPWD= md5($_POST['txtPwd']);
         $updateQuery = "UPDATE `people` SET `pwd`='$newPWD' WHERE `id` = '$id'";
-    
-        echo '$id';
-        echo '$newPWD';
-
+        
         if (mysqli_query($connection, $updateQuery)) {
             echo '<script> console.log("Record updated");</script>';
         } else {
@@ -44,7 +41,7 @@ if (isset($_SESSION['uid'])) {
 
 <body>
 
-<form id="edit_pwd_form" action="" mehod="post">
+<form id="edit_pwd_form" action="" method="post">
   <h1>Edit Your Password</h1>
 
   <div class="popup hidden">
