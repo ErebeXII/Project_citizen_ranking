@@ -8,6 +8,7 @@
     <link href="../css/classes.css" rel="stylesheet">
     <link href="../css/login.css" rel="stylesheet">
     <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/v2.034/512px/1f396.png">
+    <script src="../js/login.js"></script>
     <title>Login</title>
 </head>
 
@@ -28,13 +29,23 @@
           <div>
               <label for="password">Password</label><br />
               <input type="password" id="password" class="text-input" name="txtPassword" placeholder="🔒   Enter your password"><br />
-              <a href="">Forgot Password</a>
+              <p onclick="displayForgotPwd()">Forgot Password</p>
           </div>
 
           <br>
 
           <input type="submit" value="Login" id="login_btn" class="orange_yellow_btn" >
       </form>
+
+      <form id="forgot_pwd_form">
+          <div>
+              <label for="mail_forgot_pwd">Your Account Mail</label>
+              <input type="text" id="mail_forgot_pwd" class="text-input" name="txtEmailForgotPwd"
+                     placeholder="Enter your email to reset your password">
+          </div>
+          <input type="submit" value="Send" id="mail_forgot_pwd_btn" class="orange_yellow_btn" >
+      </form>
+
   </div>
 
     <div class="partyAdds">
