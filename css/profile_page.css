@@ -72,6 +72,7 @@ body{
 
 #personal_data #data_btns{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
     justify-items: center;
@@ -79,17 +80,32 @@ body{
     margin: 3% 0 0 0;
     max-width: none;
     width: 100%;
-
 }
 
-#logout_bnt, #edit_btn{
+#personal_data #logout_bnt, #personal_data #edit_btn, #personal_data #edit_pwd {
+    height: 2em;
+    margin: 0 0 1% 0;
     padding: 1% 2% 1% 2%;
     border-radius: 0.5em;
     cursor: pointer;
     font-weight: 800;
 }
 
+#personal_data #edit_btn div, #personal_data #edit_pwd div{
+    display: flex;
+    align-items: center;
+}
 
+#personal_data #logout_bnt{
+    display: flex;
+    align-items: center;
+    margin-right: 40%;
+    margin-left: 2%;
+}
+
+#personal_data #edit_pwd{
+    margin-right: 2%;
+}
 
 #wrapper2{
     display: flex;
@@ -191,6 +207,14 @@ body{
 
     #score_detail{
         width: 100%;
+    }
+
+    #personal_data #logout_bnt, #personal_data #edit_pwd, #personal_data #edit_btn {
+        margin: 1vh 2vw 1vh 2vw;
+    }
+
+    #personal_data #logout_bnt{
+        order: 3;
     }
 }
 
