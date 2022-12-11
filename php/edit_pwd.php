@@ -1,4 +1,30 @@
+<?php
 
+include 'DBConnection.php';
+session_start();
+
+if (isset($_SESSION['uid'])) {
+    $id = $_SESSION['uid'];
+
+    if (isset($_POST['txtPwd'])) {
+        $newPWD= md5($_POST['txtPwd']);
+        $updateQuery = "UPDATE `people` SET `pwd`='$newPWD' WHERE `id` = '$id'";
+    
+        echo '$id';
+        echo '$newPWD';
+
+        if (mysqli_query($connection, $updateQuery)) {
+            echo '<script> console.log("Record updated");</script>';
+        } else {
+            echo '<script> console.log("Error in update");</script>';
+        }
+    } else {
+        echo '<script> console.log("Nothing set");</script>';
+    }
+} else {
+    header("Location: login.php");
+}
+?>
 
 <!doctype html>
 <html lang="en">
@@ -18,7 +44,7 @@
 
 <body>
 
-<form id="edit_pwd_form" action="">
+<form id="edit_pwd_form" action="" mehod="post">
   <h1>Edit Your Password</h1>
 
   <div class="popup hidden">
@@ -36,7 +62,7 @@
   </div>
 
   <div id="button_div">
-    <input type="button" value="My Profile" id="go_to_profile" class="orange_yellow_btn" onclick="history.back()">
+    <input type="button" value="My Profile" id="go_to_profile" class="orange_yellow_btn" onclick="location.href='profile_page.php'">
     <input type="button" value="Edit Password" id="edit_pwd_form_btn" class="orange_yellow_btn" onclick="submitPwdForm()">
   </div>
 

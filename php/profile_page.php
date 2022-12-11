@@ -105,12 +105,12 @@ if (!(isset($_SESSION['uid']))) {
 
 
         <div id="data_btns">
-            <div id="logout_bnt" class="orange_yellow_btn">LogOut</div>
+            <div id="logout_bnt" class="orange_yellow_btn" onclick="location.href='logout.php'">LogOut</div>
 
             <div id="edit_btn" class="orange_yellow_btn" onclick="editPersonalData()" style="display: flex; flex-direction: row; align-items: center">
                 <div style="height: 100%"> &#9999;&#65039;</div> <div>Edit Profile</div></div>
 
-            <div id="edit_pwd" class="orange_yellow_btn" onclick="" style="display: flex; flex-direction: row; align-items: center">
+            <div id="edit_pwd" class="orange_yellow_btn" onclick="location.href='edit_pwd.php'" style="display: flex; flex-direction: row; align-items: center">
                 <div style="height: 100%">&#128273;</div> <div>Edit Password</div></div>
         </div>
 
