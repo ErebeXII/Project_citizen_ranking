@@ -377,7 +377,7 @@ function progressBarAdjustment(parent_bar, score){
 
 function uploadDataChanges(address_nb, address_city, address_street, phone, email){
 
-    idAddress = 0;
+    let idAddress = 0;
 
     console.log("new code 4");
 
