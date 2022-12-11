@@ -51,10 +51,10 @@ if (isset($_POST['txtPwd'])) {
         $row = mysqli_fetch_assoc($addressResult);
         $idAddress = $row['id_address'];
     } else {
-        $queryNBAddress = "SELECT * FROM `address` ORDER BY `id` DESC";
+        $queryNBAddress = "SELECT * FROM `address` ORDER BY `id_address` DESC";
         $addressNBResult = mysqli_query($connection, $queryNBAddress);
         $rowNBAddress = mysqli_fetch_assoc($addressNBResult);
-        $idAddress = $rowNBAddress['id'] + 1;
+        $idAddress = $rowNBAddress['id_address'] + 1;
         
         $queryNewAddress = "INSERT INTO `address`(`id_address`, `city`, `street`, `street_number`) VALUES ('$idAddress','$txtCity','$txtStreetName','$txtStreetNB')";
 

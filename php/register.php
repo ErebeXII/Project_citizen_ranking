@@ -29,10 +29,10 @@ if (isset($_POST['txtPwd'])) {
         $row = mysqli_fetch_assoc($addressResult);
         $idAddress = $row['id_address'];
     } else {
-        $queryNBAddress = "SELECT * FROM `address` ORDER BY `id` DESC";
+        $queryNBAddress = "SELECT * FROM `address` ORDER BY `id_address` DESC";
         $addressNBResult = mysqli_query($connection, $queryNBAddress);
         $rowNBAddress = mysqli_fetch_assoc($addressNBResult);
-        $idAddress = $rowNBAddress['id'] + 1;
+        $idAddress = $rowNBAddress['id_address'] + 1;
         
         $queryNewAddress = "INSERT INTO `address`(`id_address`, `city`, `street`, `street_number`) VALUES ('$idAddress','$txtCity','$txtStreetName','$txtStreetNB')";
 
@@ -49,14 +49,14 @@ if (isset($_POST['txtPwd'])) {
     $queryNBPeople = "SELECT * FROM people";
     $NBPeopleResult = mysqli_query($connection, $queryNBPeople);
     $rowNBPeople = mysqli_fetch_assoc($NBPeopleResult);
-    $IdPeople = $rowNBAddress['id'] + 1;
+    $IdPeople = $rowNBPeople['id_address'] + 1;
 
 
     $query = "INSERT INTO `people`(`id`, `pwd`, `last_name`, `first_name`, `birthday`, `place_of_birth`, `current_address_id`, `previous_address_id`, `email`, `phone`, `status_person`) VALUES ('$IdPeople','$cryptedPwd','$txtLName','$txtFName','$txtBDay','$txtPOB','$idAddress',0,'$txtEmail','$txtPhone',2)";  
 
     if (mysqli_query($connection, $query)) {
         echo '<script> console.log("Person added successfully");</script>';
-        header("Location: login.php");
+        // header("Location: login.php");
     } else {
         echo '<script> console.log("Error in person creation");</script>';
     }
