@@ -221,7 +221,7 @@ function updateDetailScore(nb_studies,social_class, salary, violation, marital_s
     }
 
 
-    good_spirit += violation;
+    good_spirit -= (-violation);
 
     switch (marital_status){
         case "Married":
