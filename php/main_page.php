@@ -1,5 +1,3 @@
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -67,13 +65,20 @@ if (isset($_POST['txtLName'])) {
             &#128512
         </h1>
     </div>
+
+    <div id="user_results">
+        <p id="result_data">
+            data
+        </p>
+    </div>
+
     <form id="form_search_citizen" method="post" action="">
         <div id="input_citizen">
             <input type="text" id="first_name_input" class="text-input"  placeholder="First Name" name="txtFName">
             <p style="font-size: 20pt">|</p>
             <input type="text" id="last_name_input" class="text-input"  placeholder="Last Name" name="txtLName">
         </div>
-        <input id="search_button" type="submit" class="myButtons orange_yellow_btn" value="Search">
+        <input id="search_button" type="" class="myButtons orange_yellow_btn" value="Search">
         <input id="ranking_button" type="button" class="myButtons dark_orange_pink_btn" onclick="rankingTable()" value="Rankings">
     </form>
 
@@ -81,6 +86,7 @@ if (isset($_POST['txtLName'])) {
 
 <div id="hidden_wrapper1" class="fixTableHead scrollable_div">
     <table id="ranking_table" >
+
         <thead>
             <tr>
                 <th>Rank</th>
@@ -101,15 +107,14 @@ if (isset($_POST['txtLName'])) {
             ?>
         </tbody>
 
-    </table>
+</table>
 </div>
 
 <div id="wrapper2">
-    <div id="party_adds">
-        adds
-    </div>
+<div id="party_adds">
+    adds
 </div>
-
+</div>
 
 </body>
 </html>
