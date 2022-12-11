@@ -51,9 +51,10 @@ if (isset($_POST['txtPwd'])) {
         $row = mysqli_fetch_assoc($addressResult);
         $idAddress = $row['id_address'];
     } else {
-        $queryNBAddress = "SELECT * FROM `address`";
+        $queryNBAddress = "SELECT * FROM `address` ORDER BY `id` DESC";
         $addressNBResult = mysqli_query($connection, $queryNBAddress);
-        $idAddress = mysqli_num_rows($addressNBResult) + 1;
+        $rowNBAddress = mysqli_fetch_assoc($addressNBResult);
+        $idAddress = $rowNBAddress['id'] + 1;
         
         $queryNewAddress = "INSERT INTO `address`(`id_address`, `city`, `street`, `street_number`) VALUES ('$idAddress','$txtCity','$txtStreetName','$txtStreetNB')";
 
@@ -63,13 +64,6 @@ if (isset($_POST['txtPwd'])) {
             echo '<script> console.log("Error in address creation");</script>';
         }
     }
-
-    // The id of the person is the number of persons in the DB + 1
-    // IRL This could pose a problem if multiple try to create a profile at the same time
-
-    $queryNBPeople = "SELECT * FROM people";
-    $NBPeopleResult = mysqli_query($connection, $queryNBPeople);
-    $IdPeople = mysqli_num_rows($NBPeopleResult) + 1;
 
     $query = "UPDATE `people` SET `pwd`='$cryptedPwd',`last_name`='$txtLName',`first_name`='$txtFName',`birthday`='$txtBDay',`place_of_birth`='$txtPOB',`current_address_id`='$idAddress',`previous_address_id`='$currentAddressId',`email`='$txtEmail',`phone`='$txtPhone' WHERE `id` = '$uid'";
     

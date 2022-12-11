@@ -29,9 +29,10 @@ if (isset($_POST['txtPwd'])) {
         $row = mysqli_fetch_assoc($addressResult);
         $idAddress = $row['id_address'];
     } else {
-        $queryNBAddress = "SELECT * FROM `address`";
+        $queryNBAddress = "SELECT * FROM `address` ORDER BY `id` DESC";
         $addressNBResult = mysqli_query($connection, $queryNBAddress);
-        $idAddress = mysqli_num_rows($addressNBResult) + 1;
+        $rowNBAddress = mysqli_fetch_assoc($addressNBResult);
+        $idAddress = $rowNBAddress['id'] + 1;
         
         $queryNewAddress = "INSERT INTO `address`(`id_address`, `city`, `street`, `street_number`) VALUES ('$idAddress','$txtCity','$txtStreetName','$txtStreetNB')";
 
@@ -42,12 +43,13 @@ if (isset($_POST['txtPwd'])) {
         }
     }
 
-    // The id of the person is the number of persons in the DB + 1
+    // The id of the person is the ID of the last person in the DB + 1
     // IRL This could pose a problem if multiple try to create a profile at the same time
 
     $queryNBPeople = "SELECT * FROM people";
     $NBPeopleResult = mysqli_query($connection, $queryNBPeople);
-    $IdPeople = mysqli_num_rows($NBPeopleResult) + 1;
+    $rowNBPeople = mysqli_fetch_assoc($NBPeopleResult);
+    $IdPeople = $rowNBAddress['id'] + 1;
 
 
     $query = "INSERT INTO `people`(`id`, `pwd`, `last_name`, `first_name`, `birthday`, `place_of_birth`, `current_address_id`, `previous_address_id`, `email`, `phone`, `status_person`) VALUES ('$IdPeople','$cryptedPwd','$txtLName','$txtFName','$txtBDay','$txtPOB','$idAddress',0,'$txtEmail','$txtPhone',2)";  
