@@ -1,15 +1,23 @@
 let horizontal_ads = setUpImg(["../images/ad1.png","../images/ad2.jpg","../images/ad3.jpg",
-    "../images/ad4.jpg","../images/ad5.png"]);
+        "../images/ad5.jpg"]);
 
-let vertical_ads = setUpImg(["../images/ad21.jpg","../images/ad22.png","../images/ad23.jpg"]);
+let vertical_ads = setUpImg(["../images/ad21.jpg","../images/ad22.png","../images/ad23.jpg"], true);
 
-function setUpImg(list){
+function setUpImg(list, vertical){
     let copy = [];
 
     for (let i = 0; i < list.length; i++) {
         let img = document.createElement("img");
-        img.style.width = "50vw";
-        img.style.height = "auto";
+
+        if (!vertical){
+            img.style.width = "50vw";
+            img.style.height = "40vh";
+        }
+        else {
+            img.style.width = "20vw";
+            img.style.height = "80vh";
+        }
+
         img.style.objectFit = "cover";
         img.src = list[i];
         copy[i] = img;
@@ -39,7 +47,7 @@ function adsFilm(element_name, index, vertical){
 
         element.appendChild(vertical_ads[index]);
 
-        setTimeout(adsFilm, 3000, save_name, index+1);
+        setTimeout(adsFilm, 3000, save_name, index+1, true);
     }
 
 }

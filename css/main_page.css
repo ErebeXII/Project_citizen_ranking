@@ -155,7 +155,7 @@ header{
     width: 85vw;
     height: 38vh;
     margin-top: 3%;
-    margin-bottom: 3%;
+    margin-bottom: 1%;
 }
 
 #party_ads{
@@ -239,6 +239,10 @@ span.input[contenteditable]:empty::before {
 
     #hidden_wrapper1{
         width: 100vw;
+    }
+
+    .partyAdds{
+        opacity: 0;
     }
 
 }

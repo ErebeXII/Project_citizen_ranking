@@ -132,11 +132,12 @@ body{
 
 
 .partyAdds{
-    height: 85vh;
-    width: 15vw;
+    height: 80vh;
+    width: 20vw;
     background-color: #607080;
     border-radius: 0.5em;
     margin: 1vw;
+    overflow: hidden;
 }
 
 @media (max-width: 900px) {
@@ -169,5 +170,9 @@ body{
     #forgot_pwd_form > div:first-of-type{
         width: 90%;
         margin: 1%;
+    }
+
+    .partyAdds{
+        opacity: 0;
     }
 }
