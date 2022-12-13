@@ -46,7 +46,7 @@ if (isset($_POST['txtPwd'])) {
     // The id of the person is the ID of the last person in the DB + 1
     // IRL This could pose a problem if multiple try to create a profile at the same time
 
-    $queryNBPeople = "SELECT * FROM people";
+    $queryNBPeople = "SELECT * FROM people ORDER BY `id` DESC";
     $NBPeopleResult = mysqli_query($connection, $queryNBPeople);
     $rowNBPeople = mysqli_fetch_assoc($NBPeopleResult);
     $IdPeople = $rowNBPeople['id'] + 1;
