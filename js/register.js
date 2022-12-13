@@ -163,7 +163,7 @@ function check_pswd(){
     let pwd1 = el_pwd1.value;
     let pwd2 = el_pwd2.value;
 
-    if (pwd1.length > 20 || pwd1 === ""){
+    if (pwd1.length > 20 || pwd1.length > 5){
         setWarning(el_pwd1, "popup_pwd1");
         return false
     }
