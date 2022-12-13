@@ -56,7 +56,7 @@ if (isset($_POST['txtPwd'])) {
 
     if (mysqli_query($connection, $query)) {
         echo '<script> console.log("Person added successfully");</script>';
-        // header("Location: login.php");
+        header("Location: login.php");
     } else {
         echo '<script> console.log("Error in person creation");</script>';
     }
