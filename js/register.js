@@ -209,7 +209,7 @@ function check_mail(){
     let el_mail = document.getElementById('e-mail');
     let mail = el_mail.value;
 
-    if(mail !=="" && !mail_re.test(mail)){
+    if(!mail_re.test(mail)){
         setWarning(el_mail, "popup_mail");
         return false;
     }
